@@ -1,4 +1,5 @@
 import Banner from "@/components/Banner";
+import CustomerTestimonials from "@/components/CustomerTestimonials";
 import FeaturedItems from "@/components/FeaturedItems/FeaturedItems";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
@@ -19,6 +20,9 @@ const SportsHome = () => {
         </div>
         <div className="py-16">
           <HowItWorks />
+        </div>
+        <div className="py-16">
+          <CustomerTestimonials />
         </div>
       </div>
       <div className="bg-violet-400 text-black">
