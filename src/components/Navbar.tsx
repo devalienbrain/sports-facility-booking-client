@@ -72,8 +72,9 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
-          <a>Login</a>
+        <div className="navbar-end flex items-center gap-2">
+          <a className="hover:text-violet-400">Login</a>
+          <a className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">Register</a>
         </div>
       </div>
     </>
