@@ -1,9 +1,12 @@
 const FeaturedItems = () => {
   return (
     <>
+      <div className="text-center">
+        <h1 className="font-bold text-4xl pb-10">Featured Facilities</h1>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {/* 1 */}
-        <div className="card glass w-96">
+        <div className="card glass">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -19,7 +22,7 @@ const FeaturedItems = () => {
           </div>
         </div>
         {/* 2 */}
-        <div className="card glass w-96">
+        <div className="card glass">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -35,7 +38,7 @@ const FeaturedItems = () => {
           </div>
         </div>
         {/* 3 */}
-        <div className="card glass w-96">
+        <div className="card glass">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -51,7 +54,7 @@ const FeaturedItems = () => {
           </div>
         </div>
         {/* 4 */}
-        <div className="card glass w-96">
+        <div className="card glass">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -67,7 +70,7 @@ const FeaturedItems = () => {
           </div>
         </div>
         {/* 5 */}
-        <div className="card glass w-96">
+        <div className="card glass">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
@@ -83,7 +86,7 @@ const FeaturedItems = () => {
           </div>
         </div>
         {/* 6 */}
-        <div className="card glass w-96">
+        <div className="card glass">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
