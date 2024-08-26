@@ -1,3 +1,4 @@
+import logo from "/resources/logo.png"
 const Navbar = () => {
   return (
     <>
@@ -43,7 +44,10 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">Sportly</a>
+          <div className="flex items-center gap-0">
+            <img src={logo} alt="Logo" className="w-7"/>
+          <a className="btn btn-ghost font-bold text-2xl">Sportly</a>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

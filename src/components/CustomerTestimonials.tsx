@@ -40,10 +40,10 @@ const CustomerTestimonials: React.FC = () => {
   return (
     <div className="py-12 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-8">
+        <h2 className="text-5xl font-black text-center mb-8 ">
           Customer Testimonials
         </h2>
-        <div className="relative bg-slate-900/10 p-8 rounded-lg shadow-lg">
+        <div className="relative bg-gradient-to-b from-white via-slate-200 to-slate-300 p-8 rounded-lg shadow-lg">
           <div className="flex flex-col items-center">
             <p className="text-lg text-gray-700 italic mb-4 text-center">
               "{testimonials[current].feedback}"
@@ -60,7 +60,7 @@ const CustomerTestimonials: React.FC = () => {
           <div className="absolute inset-y-0 left-0 flex items-center">
             <button
               onClick={handlePrev}
-              className="bg-primary hover:bg-primary-focus text-white rounded-full p-2"
+              className="text-black font-semibold text-xl rounded-full p-2"
             >
               &lt;
             </button>
@@ -68,7 +68,7 @@ const CustomerTestimonials: React.FC = () => {
           <div className="absolute inset-y-0 right-0 flex items-center">
             <button
               onClick={handleNext}
-              className="bg-primary hover:bg-primary-focus text-white rounded-full p-2"
+              className="text-black font-semibold text-xl rounded-full p-2"
             >
               &gt;
             </button>
@@ -80,3 +80,21 @@ const CustomerTestimonials: React.FC = () => {
 };
 
 export default CustomerTestimonials;
+
+// ** For Api
+// import React, { useState, useEffect } from 'react';
+
+// const CustomerTestimonials: React.FC = () => {
+//   const [testimonials, setTestimonials] = useState([]);
+//   const [current, setCurrent] = useState(0);
+
+//   useEffect(() => {
+//     // Fetch testimonials from your API
+//     fetch('https://your-api-url.com/testimonials')
+//       .then(response => response.json())
+//       .then(data => setTestimonials(data))
+//       .catch(error => console.error('Error fetching testimonials:', error));
+//   }, []);
+
+//   // Remaining component code
+// };

@@ -2,7 +2,7 @@ const FeaturedItems = () => {
   return (
     <>
       <div className="text-center">
-        <h1 className="font-bold text-4xl pb-10">Featured Facilities</h1>
+        <h1 className="text-5xl font-black text-center mb-8">Featured Facilities</h1>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         {/* 1 */}
