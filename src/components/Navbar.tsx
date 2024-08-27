@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import logo from "/resources/logo.png";
 const Navbar = () => {
   return (
@@ -44,10 +45,12 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="flex items-center gap-0">
-            <img src={logo} alt="Logo" className="w-7" />
-            <a className="btn btn-ghost font-bold text-2xl">Sportly</a>
-          </div>
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <img src={logo} alt="Logo" className="w-7" />
+              <p className="font-bold text-2xl">Sportly</p>
+            </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -73,10 +76,14 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          <a className="hover:text-violet-400">Login</a>
-          <a className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
-            Register
-          </a>
+          <Link to="/login">
+            <button className="hover:text-violet-400">Login</button>
+          </Link>
+          <Link to="/register">
+            <button className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
+              Register
+            </button>
+          </Link>
         </div>
       </div>
     </>

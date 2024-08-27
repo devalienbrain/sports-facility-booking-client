@@ -43,7 +43,7 @@ const CustomerTestimonials: React.FC = () => {
         <h2 className="text-5xl font-black text-center mb-8 ">
           Customer Testimonials
         </h2>
-        <div className="relative bg-gradient-to-b from-white via-slate-200 to-slate-300 p-8 rounded-lg shadow-lg">
+        <div className="relative bg-gradient-to-b from-white via-slate-200 to-slate-300 p-8 rounded-lg">
           <div className="flex flex-col items-center">
             <p className="text-lg text-gray-700 italic mb-4 text-center">
               "{testimonials[current].feedback}"

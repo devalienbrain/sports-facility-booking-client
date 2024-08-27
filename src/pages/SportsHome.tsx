@@ -5,15 +5,12 @@ import FAQSection from "@/components/FAQSection";
 import FeaturedItems from "@/components/FeaturedItems/FeaturedItems";
 import Footer from "@/components/Footer";
 import HowItWorks from "@/components/HowItWorks";
-import Navbar from "@/components/Navbar";
+
 import ScrollToTopButton from "@/components/ScrollToTop";
 
 const SportsHome = () => {
   return (
     <>
-      <div className="max-w-7xl mx-auto">
-        <Navbar />
-      </div>
       <div>
         <Banner />
       </div>
@@ -42,7 +39,7 @@ const SportsHome = () => {
           <Footer />
         </div>
       </div>
-      <ScrollToTopButton /> 
+      <ScrollToTopButton />
     </>
   );
 };
