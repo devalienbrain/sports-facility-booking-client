@@ -1,4 +1,4 @@
-import logo from "/resources/logo.png"
+import logo from "/resources/logo.png";
 const Navbar = () => {
   return (
     <>
@@ -45,8 +45,8 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center gap-0">
-            <img src={logo} alt="Logo" className="w-7"/>
-          <a className="btn btn-ghost font-bold text-2xl">Sportly</a>
+            <img src={logo} alt="Logo" className="w-7" />
+            <a className="btn btn-ghost font-bold text-2xl">Sportly</a>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -74,7 +74,9 @@ const Navbar = () => {
         </div>
         <div className="navbar-end flex items-center gap-2">
           <a className="hover:text-violet-400">Login</a>
-          <a className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">Register</a>
+          <a className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
+            Register
+          </a>
         </div>
       </div>
     </>
