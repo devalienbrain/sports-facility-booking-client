@@ -1,5 +1,9 @@
 import Layout from "@/layout/Layout";
+import AboutUs from "@/pages/AboutUs";
+import ContactUs from "@/pages/ContactUs";
 import ErrorPage from "@/pages/ErrorPage/ErrorPage";
+import FacilityListing from "@/pages/FacilitiesList/FacilitiesList";
+import FacilityBooking from "@/pages/FacilityBooking/FacilityBooking";
 import Login from "@/pages/LoginPage";
 import Register from "@/pages/RegisterPage";
 import SportsHome from "@/pages/SportsHome";
@@ -22,6 +26,22 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUs />,
+      },
+      {
+        path: "/contact-us",
+        element: <ContactUs />,
+      },
+      {
+        path: "/facilities-list",
+        element: <FacilityListing />,
+      },
+      {
+        path: "/facility-booking",
+        element: <FacilityBooking />,
       },
     ],
   },

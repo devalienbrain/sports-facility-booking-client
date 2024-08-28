@@ -27,21 +27,33 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>Item 1</a>
+                <Link to="/about-us">
+                  {" "}
+                  <p>About</p>
+                </Link>
               </li>
               <li>
-                <a>Parent</a>
+                <a>Facilities</a>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
+                    <Link to="/facilities-list">
+                      {" "}
+                      <p>Facilities list</p>
+                    </Link>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <Link to="/facility-booking">
+                      {" "}
+                      <p>Facility booking</p>
+                    </Link>
                   </li>
                 </ul>
               </li>
               <li>
-                <a>Item 3</a>
+                <Link to="/contact-us">
+                  {" "}
+                  <p>Contact</p>
+                </Link>
               </li>
             </ul>
           </div>
@@ -55,23 +67,35 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <Link to="/about-us">
+                {" "}
+                <p>About</p>
+              </Link>
             </li>
             <li>
               <details>
-                <summary>Parent</summary>
+                <summary>Facilities</summary>
                 <ul className="p-2">
                   <li>
-                    <a>Submenu 1</a>
+                    <Link to="/facilities-list">
+                      {" "}
+                      <p>Facilities list</p>
+                    </Link>
                   </li>
                   <li>
-                    <a>Submenu 2</a>
+                    <Link to="/facility-booking">
+                      {" "}
+                      <p>Facility booking</p>
+                    </Link>
                   </li>
                 </ul>
               </details>
             </li>
             <li>
-              <a>Item 3</a>
+              <Link to="/contact-us">
+                {" "}
+                <p>Contact</p>
+              </Link>
             </li>
           </ul>
         </div>
