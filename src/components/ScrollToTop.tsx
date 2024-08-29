@@ -1,6 +1,7 @@
 // components/ScrollToTopButton.tsx
 import { useState, useEffect } from "react";
-
+import Aos from "aos";
+import "aos/dist/aos.css";
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -21,11 +22,14 @@ const ScrollToTopButton = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
+  useEffect(() => {
+    Aos.init({ duration: 5000 });
+  }, []);
 
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-5 right-5 p-3 border border-white text-white rounded-full shadow-lg ${
+      className={`fixed bottom-5 right-5 p-3 rounded-full z-10 ${
         isVisible ? "block" : "hidden"
       }`}
       aria-label="Scroll to Top"

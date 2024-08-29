@@ -1,25 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 const Register = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address, setAddress] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const [role, setRole] = useState("");
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    // Add your registration logic here
-    console.log('Register:', { name, email, password, phone, address });
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ name, email, password, phone, address, role : "admin" }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Registration failed");
+      }
+
+      const data = await response.json();
+      setSuccess("Registration successful!");
+      setError(""); // Clear any previous errors
+      console.log("Register response:", data);
+    } catch (error) {
+      setError("Registration failed. Please try again.");
+      setSuccess("");
+      console.error("Error during registration:", error);
+    }
   };
 
   return (
     <div className="flex justify-center items-center h-screen">
       <div className="w-full max-w-lg">
-        <form onSubmit={handleRegister} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <form
+          onSubmit={handleRegister}
+          className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        >
           <h2 className="text-2xl font-bold text-center mb-6">Register</h2>
+          {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+          {success && (
+            <p className="text-green-500 text-center mb-4">{success}</p>
+          )}
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="name"
+            >
               Name
             </label>
             <input
@@ -33,7 +67,10 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -47,7 +84,10 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -61,7 +101,10 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="phone"
+            >
               Phone
             </label>
             <input
@@ -75,7 +118,10 @@ const Register = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="address">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="address"
+            >
               Address
             </label>
             <input
@@ -89,10 +135,7 @@ const Register = () => {
             />
           </div>
           <div className="flex items-center justify-between">
-            <button
-              type="submit"
-              className="btn btn-primary w-full"
-            >
+            <button type="submit" className="btn btn-primary w-full">
               Sign Up
             </button>
           </div>
