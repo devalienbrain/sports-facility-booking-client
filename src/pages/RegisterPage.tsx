@@ -19,7 +19,14 @@ const Register = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password, phone, address, role : "admin" }),
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+          phone,
+          address,
+          role: "admin",
+        }),
       });
 
       if (!response.ok) {
@@ -38,7 +45,7 @@ const Register = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center min-h-screen py-20">
       <div className="w-full max-w-lg">
         <form
           onSubmit={handleRegister}

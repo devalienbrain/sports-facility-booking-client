@@ -75,7 +75,7 @@ const Navbar = () => {
             <li>
               <details>
                 <summary>Facilities</summary>
-                <ul className="p-2">
+                <ul className="p-2 z-10">
                   <li>
                     <Link to="/facilities-list">
                       {" "}
@@ -100,6 +100,15 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
+          <Link to="/dashboard">
+            <button className="hover:text-violet-400">dashboard</button>
+          </Link>
+          <Link to="/dashboard/facilities">
+            <button className="hover:text-violet-400">X</button>
+          </Link>
+          <Link to="/dashboard/booking">
+            <button className="hover:text-violet-400">Z</button>
+          </Link>
           <Link to="/login">
             <button className="hover:text-violet-400">Login</button>
           </Link>

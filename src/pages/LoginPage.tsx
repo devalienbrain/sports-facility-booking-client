@@ -1,37 +1,31 @@
+import { useLoginUserMutation } from "@/redux/api";
 import { useState } from "react";
-import axios from "axios";
-// import { unstable_HistoryRouter } from "react-router-dom";
-// import { useHistory } from "react-router-dom"; // Import useHistory for redirection
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  // const history = unstable_HistoryRouter(); // Initialize useHistory
+  const navigate = useNavigate();
+
+  const [loginUser, { isLoading }] = useLoginUserMutation(); // Use the mutation hook
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/auth/login",
-        { email, password }
-      );
+      const response = await loginUser({ email, password }).unwrap(); // Use the mutation and unwrap the response
 
-      if (response.data.success) {
-        // Save token to localStorage
-        localStorage.setItem("accessToken", response.data.token);
-        console.log("sucess mama");
-        // Redirect to dashboard
-        // history.push("/dashboard");
+      if (response.success) {
+        localStorage.setItem("accessToken", response.token); // Store token in local storage
+        navigate("/dashboard"); // Redirect to dashboard on success
       }
     } catch (err) {
-      setError("Login failed. Please check your email and password.");
+      setError("Login failed. Please check your email and password."); // Display error message on failure
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center min-h-screen py-20">
       <div className="w-full max-w-lg">
         <form
           onSubmit={handleLogin}
@@ -74,8 +68,12 @@ const Login = () => {
             />
           </div>
           <div className="flex items-center justify-between">
-            <button type="submit" className="btn btn-primary w-full">
-              Login
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+              disabled={isLoading}
+            >
+              {isLoading ? "Logging in..." : "Login"}
             </button>
           </div>
           <div className="text-center mt-4">

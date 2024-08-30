@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
 
 // Mock facility data (Replace with data fetching logic)
 const mockFacility = {
-  id: '1',
-  name: 'Soccer Field A',
-  location: 'City Center',
+  id: "1",
+  name: "Soccer Field A",
+  location: "City Center",
   pricePerHour: 50,
-  description: 'A high-quality soccer field located in the heart of the city, perfect for both amateur and professional matches.',
-  images: ['https://via.placeholder.com/400', 'https://via.placeholder.com/400'], // Replace with actual image URLs
+  description:
+    "A high-quality soccer field located in the heart of the city, perfect for both amateur and professional matches.",
+  images: [
+    "https://via.placeholder.com/400",
+    "https://via.placeholder.com/400",
+  ], // Replace with actual image URLs
 };
 
 const FacilityDetails = () => {
@@ -22,7 +26,11 @@ const FacilityDetails = () => {
           <div className="carousel">
             {images.map((image, index) => (
               <div key={index} className="carousel-item">
-                <img src={image} alt={`Facility Image ${index + 1}`} className="w-full h-64 object-cover rounded-lg" />
+                <img
+                  src={image}
+                  alt={`Facility Image ${index + 1}`}
+                  className="w-full h-64 object-cover rounded-lg"
+                />
               </div>
             ))}
           </div>
@@ -34,7 +42,9 @@ const FacilityDetails = () => {
           <p className="text-lg text-gray-700 mb-2">{location}</p>
           <p className="text-lg text-gray-800 mb-4">${pricePerHour} per hour</p>
           <p className="text-gray-700">{description}</p>
-          <button className="btn btn-primary mt-4" onClick={navigateToBooking}>Book Now</button>
+          <button className="btn btn-primary mt-4" onClick={navigateToBooking}>
+            Book Now
+          </button>
         </div>
       </div>
     </div>
@@ -43,7 +53,7 @@ const FacilityDetails = () => {
 
 // Mock navigate function (Replace with your router logic)
 const navigateToBooking = () => {
-  console.log('Navigating to booking page...');
+  console.log("Navigating to booking page...");
 };
 
 export default FacilityDetails;
