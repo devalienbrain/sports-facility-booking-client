@@ -1,26 +1,31 @@
+// src/components/Login.tsx
 import { useLoginUserMutation } from "@/redux/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUser } from "@/redux/features/userSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const [loginUser, { isLoading }] = useLoginUserMutation(); // Use the mutation hook
+  const [loginUser, { isLoading }] = useLoginUserMutation();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser({ email, password }).unwrap(); // Use the mutation and unwrap the response
-
+      const response = await loginUser({ email, password }).unwrap();
       if (response.success) {
-        localStorage.setItem("accessToken", response.token); // Store token in local storage
-        navigate("/dashboard"); // Redirect to dashboard on success
+        console.log(response.data, response.token);
+        localStorage.setItem("accessToken", response.token);
+        dispatch(setUser(response.data)); // Store user in Redux
+        navigate("/dashboard");
       }
     } catch (err) {
-      setError("Login failed. Please check your email and password."); // Display error message on failure
+      setError("Login failed. Please check your email and password.");
     }
   };
 

@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // Define the base API service
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }), // Replace with your actual backend base URL
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }), 
   endpoints: (builder) => ({
     // User Login
     loginUser: builder.mutation({

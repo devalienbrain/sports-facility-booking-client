@@ -1,6 +1,13 @@
+
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store"; // Adjust path as necessary
 import logo from "/resources/logo.png";
+
 const Navbar = () => {
+  // Access the user from Redux store
+  const user = useSelector((state: RootState) => state.user);
+
   return (
     <>
       <div className="navbar">
@@ -28,7 +35,6 @@ const Navbar = () => {
             >
               <li>
                 <Link to="/about-us">
-                  {" "}
                   <p>About</p>
                 </Link>
               </li>
@@ -37,13 +43,11 @@ const Navbar = () => {
                 <ul className="p-2">
                   <li>
                     <Link to="/facilities-list">
-                      {" "}
                       <p>Facilities list</p>
                     </Link>
                   </li>
                   <li>
                     <Link to="/facility-booking">
-                      {" "}
                       <p>Facility booking</p>
                     </Link>
                   </li>
@@ -51,7 +55,6 @@ const Navbar = () => {
               </li>
               <li>
                 <Link to="/contact-us">
-                  {" "}
                   <p>Contact</p>
                 </Link>
               </li>
@@ -68,7 +71,6 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">
             <li>
               <Link to="/about-us">
-                {" "}
                 <p>About</p>
               </Link>
             </li>
@@ -78,13 +80,11 @@ const Navbar = () => {
                 <ul className="p-2 z-10">
                   <li>
                     <Link to="/facilities-list">
-                      {" "}
                       <p>Facilities list</p>
                     </Link>
                   </li>
                   <li>
                     <Link to="/facility-booking">
-                      {" "}
                       <p>Facility booking</p>
                     </Link>
                   </li>
@@ -93,30 +93,44 @@ const Navbar = () => {
             </li>
             <li>
               <Link to="/contact-us">
-                {" "}
                 <p>Contact</p>
               </Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          <Link to="/dashboard">
-            <button className="hover:text-violet-400">dashboard</button>
-          </Link>
-          <Link to="/dashboard/facilities">
-            <button className="hover:text-violet-400">X</button>
-          </Link>
-          <Link to="/dashboard/booking">
-            <button className="hover:text-violet-400">Z</button>
-          </Link>
-          <Link to="/login">
-            <button className="hover:text-violet-400">Login</button>
-          </Link>
-          <Link to="/register">
-            <button className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
-              Register
-            </button>
-          </Link>
+          {user.currentUser ? (
+            <Link to="/dashboard">
+              <button className="flex items-center gap-1 bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
+                Go to your Dashboard
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </Link>
+          ) : (
+            <>
+              <Link to="/login">
+                <button className="hover:text-violet-400">Login</button>
+              </Link>
+              <Link to="/register">
+                <button className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
+                  Register
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </>

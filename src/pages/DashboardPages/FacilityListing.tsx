@@ -36,7 +36,10 @@ const FacilityListingPage: React.FC = () => {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {filteredFacilities.map((facility: any) => (
-            <div className="bg-white rounded-lg shadow-lg p-4" key={facility._id}>
+            <div
+              className="bg-white rounded-lg shadow-lg p-4"
+              key={facility._id}
+            >
               <img
                 src={facility.image}
                 alt={facility.name}
