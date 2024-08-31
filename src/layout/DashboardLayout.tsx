@@ -7,20 +7,20 @@ import {
   useGetFacilitiesQuery,
 } from "@/redux/api";
 import { RootState } from "@/redux/store";
-import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useAppDispatch } from "@/redux/hook";
-import { clearUser } from "@/redux/features/userSlice";
+import { logout } from "@/redux/features/userSlice";
 import logo from "/resources/logo.png";
 
 const Dashboard: React.FC = () => {
   const user = useSelector((state: RootState) => state.user);
-  console.log(user.currentUser);
+  console.log(user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   // Fetch data based on user role
   const { data: userBookings = [], isLoading: isUserBookingsLoading } =
-    useGetUserBookingsQuery(user?.currentUser?.id || "", {
+    useGetUserBookingsQuery(user?.currentUser?._id || "", {
       skip: user?.currentUser?.role !== "user",
     });
   const { data: allBookings = [], isLoading: isAllBookingsLoading } =
@@ -34,7 +34,7 @@ const Dashboard: React.FC = () => {
 
   if (!user) return <p>Loading...</p>;
   const handleLogout = () => {
-    dispatch(clearUser());
+    dispatch(logout());
     navigate("/");
   };
 
@@ -70,9 +70,9 @@ const Dashboard: React.FC = () => {
           {user?.currentUser?.role === "admin" ? (
             <>
               <h2 className="text-xl font-semibold mb-2">Admin Dashboard</h2>
-              <section className="bg-gray-100 rounded-lg shadow-md mb-6 flex flex-row md:flex-col">
+              <section className="bg-gray-100 rounded-lg shadow-md mb-6">
                 {/* Facility Management */}
-                <div className="flex space-x-4 mb-4">
+                <div className="flex space-y-4 md:space-x-4 mb-4 md:mb-0 flex-row md:flex-col">
                   <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
                     Add Facility
                   </button>
@@ -101,7 +101,7 @@ const Dashboard: React.FC = () => {
           ) : (
             <>
               <h2 className="text-xl font-semibold mb-2">User Dashboard</h2>
-              <section className="bg-gray-100 p-4 rounded-lg shadow-md">
+              <section className="bg-gray-100/10 p-4 rounded-lg shadow-md">
                 <h3 className="text-lg font-bold mb-2">My Bookings</h3>
                 {isUserBookingsLoading ? (
                   <p>Loading your bookings...</p>
