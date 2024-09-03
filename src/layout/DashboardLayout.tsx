@@ -70,6 +70,7 @@ const Dashboard: React.FC = () => {
           {user?.currentUser?.role === "admin" ? (
             <>
               <h2 className="text-xl font-semibold mb-2">Admin Dashboard</h2>
+              <Link to='/dashboard/facilities'>All Facilities</Link>
               <section className="bg-gray-100 rounded-lg shadow-md mb-6">
                 {/* Facility Management */}
                 <div className="flex space-y-4 md:space-x-4 mb-4 md:mb-0 flex-row md:flex-col">
@@ -102,7 +103,9 @@ const Dashboard: React.FC = () => {
             <>
               <h2 className="text-xl font-semibold mb-2">User Dashboard</h2>
               <section className="bg-gray-100/10 p-4 rounded-lg shadow-md">
-                <h3 className="text-lg font-bold mb-2">My Bookings</h3>
+                <Link to="/dashboard/booking">
+                  <h3 className="text-lg font-bold mb-2">My Bookings</h3>
+                </Link>
                 {isUserBookingsLoading ? (
                   <p>Loading your bookings...</p>
                 ) : (

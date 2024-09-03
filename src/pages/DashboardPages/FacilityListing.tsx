@@ -6,10 +6,10 @@ const FacilityListingPage: React.FC = () => {
 
   // Fetch facilities using the RTK Query hook
   const { data, isLoading, error } = useGetFacilitiesQuery("");
-
-  // Check if `data` is an array, otherwise default to an empty array
-  const facilities = Array.isArray(data) ? data : [];
-
+  // const facilities = Array.isArray(data) ? data : [];
+  console.log({ data });
+  console.log(data.data);
+  const facilities = data.data || [];
   // Filter facilities based on the search term
   const filteredFacilities = facilities.filter((facility: any) =>
     facility.name.toLowerCase().includes(searchTerm.toLowerCase())
