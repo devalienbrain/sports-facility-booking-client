@@ -4,6 +4,9 @@ import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
 import BookingPage from "@/pages/DashboardPages/BookingPage";
 import FacilityListingPage from "@/pages/DashboardPages/FacilityListing";
+import ManageBookings from "@/pages/DashboardPages/ManageBooking";
+import ManageFacilities from "@/pages/DashboardPages/ManageFacilities";
+import ManageUsers from "@/pages/DashboardPages/ManageUsers";
 import ErrorPage from "@/pages/ErrorPage/ErrorPage";
 import FacilityListing from "@/pages/FacilitiesList/FacilitiesList";
 import FacilityBooking from "@/pages/FacilityBooking/FacilityBooking";
@@ -54,11 +57,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "facilities",
-        element: <FacilityListingPage />,
+        element: <ManageFacilities />,
       },
       {
-        path: "booking",
-        element: <BookingPage />,
+        path: "bookings",
+        element: <ManageBookings />,
+      },
+      {
+        path: "users",
+        element: <ManageUsers />,
       },
     ],
   },
