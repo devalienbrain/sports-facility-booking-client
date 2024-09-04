@@ -99,7 +99,7 @@ const Dashboard: React.FC = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/allDonationsByAdmin">
+                  <NavLink to="/dashboard/bookings">
                     <FaShoppingCart></FaShoppingCart>
                     All Bookings
                   </NavLink>

@@ -12,6 +12,8 @@ const ManageBookings: React.FC = () => {
   } = useGetAllBookingsQuery();
   const [deleteBooking] = useDeleteBookingMutation();
 
+  console.log(bookings);
+
   const handleDelete = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this booking?")) {
       try {
@@ -25,9 +27,9 @@ const ManageBookings: React.FC = () => {
     }
   };
 
-  if (isLoading) return <div className="p-4">Loading...</div>;
-  if (error)
-    return <div className="p-4 text-red-500">Error loading bookings</div>;
+  // if (isLoading) return <div className="p-4">Loading...</div>;
+  // if (error)
+  //   return <div className="p-4 text-red-500">Error loading bookings</div>;
 
   return (
     <div className="p-4">
