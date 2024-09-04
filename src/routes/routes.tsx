@@ -2,6 +2,7 @@ import Dashboard from "@/layout/DashboardLayout";
 import Layout from "@/layout/Layout";
 import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
+import AddFacility from "@/pages/DashboardPages/AddFacility";
 import BookingPage from "@/pages/DashboardPages/BookingPage";
 import FacilityListingPage from "@/pages/DashboardPages/FacilityListing";
 import ManageBookings from "@/pages/DashboardPages/ManageBooking";
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "facilities",
         element: <ManageFacilities />,
+      },
+      {
+        path: "facility/add",
+        element: <AddFacility />,
       },
       {
         path: "bookings",

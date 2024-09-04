@@ -27,7 +27,7 @@ const ManageFacilities: React.FC = () => {
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
         <h1 className="text-2xl font-bold">Manage Facilities</h1>
-        <Link to="/facility/add" className="bg-blue-500 text-white px-4 py-2 rounded">
+        <Link to="/dashboard/facility/add" className="bg-blue-500 text-white px-4 py-2 rounded">
           Add Facility
         </Link>
       </div>
