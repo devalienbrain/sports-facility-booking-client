@@ -102,7 +102,7 @@ const Navbar = () => {
           {user.currentUser ? (
             <Link to="/dashboard">
               <button className="flex items-center gap-1 bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
-                Go to your Dashboard
+                My Dashboard
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"

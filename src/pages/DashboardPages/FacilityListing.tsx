@@ -9,7 +9,7 @@ const FacilityListingPage: React.FC = () => {
   // const facilities = Array.isArray(data) ? data : [];
   console.log({ data });
   console.log(data.data);
-  const facilities = data.data || [];
+  const facilities = data?.data || [];
   // Filter facilities based on the search term
   const filteredFacilities = facilities.filter((facility: any) =>
     facility.name.toLowerCase().includes(searchTerm.toLowerCase())
