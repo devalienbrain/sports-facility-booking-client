@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store"; // Adjust path as necessary
@@ -101,7 +100,7 @@ const Navbar = () => {
         <div className="navbar-end flex items-center gap-2">
           {user.currentUser ? (
             <Link to="/dashboard">
-              <button className="flex items-center gap-1 bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
+              <button className="flex items-center gap-1 border border-slate-600 py-2 px-4 rounded-md">
                 My Dashboard
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -122,10 +121,10 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="hover:text-violet-400">Login</button>
+                <button className="hover:text-green-400">Login</button>
               </Link>
               <Link to="/register">
-                <button className="bg-violet-400 hover:bg-violet-500 py-2 px-4 rounded-md">
+                <button className="border border-slate-700 hover:bg-slate-700 py-2 px-4 rounded-md">
                   Register
                 </button>
               </Link>

@@ -34,7 +34,7 @@ const SportsHome = () => {
           <FAQSection />
         </div>
       </div>
-      <div className="bg-violet-400 text-black">
+      <div className="bg-slate-950 text-white">
         <div className="max-w-7xl mx-auto">
           <Footer />
         </div>

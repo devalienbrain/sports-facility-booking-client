@@ -37,23 +37,26 @@ const HowItWorks: React.FC = () => {
         "Head to the facility on the booked date and time, and enjoy your game!",
       icon: "⚽",
     },
+    {
+      id: 6,
+      title: "Rate & Review",
+      description:
+        "After your game, leave a rating and review to help others make informed decisions.",
+      icon: "⭐",
+    },
   ];
 
   return (
-    <div className="py-12 bg-gradient-to-br from-gray-50 via-violet-400 to-red-400 rounded-lg">
+    <div>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <h2 className="text-5xl font-black text-center mb-8 text-black">
-          How It Works
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <h2 className="text-5xl font-black text-center mb-8">How It Works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {steps.map((step) => (
             <div
               key={step.id}
               className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md"
             >
-              <div className="text-4xl rounded-full p-4 mb-4">
-                {step.icon}
-              </div>
+              <div className="text-4xl rounded-full p-4 mb-4">{step.icon}</div>
               <h3 className="text-xl text-black font-semibold mb-2 text-center">
                 {step.title}
               </h3>

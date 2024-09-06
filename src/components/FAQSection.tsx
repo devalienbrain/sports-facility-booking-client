@@ -49,16 +49,16 @@ const FAQSection: React.FC = () => {
         </h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.id} className="bg-white rounded-lg shadow-md p-4">
+            <div key={faq.id} className="border border-slate-800 rounded-lg shadow-md p-4">
               <button
                 className="w-full text-left flex justify-between items-center"
                 onClick={() => toggleFAQ(faq.id)}
               >
-                <h3 className="text-lg font-semibold text-gray-800">
+                <h3 className="text-base font-semibold text-white">
                   {faq.question}
                 </h3>
                 <span
-                  className={`text-gray-500 ${
+                  className={`text-white ${
                     openFAQ === faq.id ? "rotate-180" : ""
                   } transform transition-transform`}
                 >
@@ -67,7 +67,7 @@ const FAQSection: React.FC = () => {
               </button>
               {openFAQ === faq.id && (
                 <div className="mt-4">
-                  <p className="text-gray-600">{faq.answer}</p>
+                  <p className="text-white">{faq.answer}</p>
                 </div>
               )}
             </div>

@@ -43,24 +43,22 @@ const CustomerTestimonials: React.FC = () => {
         <h2 className="text-5xl font-black text-center mb-8 ">
           Customer Testimonials
         </h2>
-        <div className="relative bg-gradient-to-b from-white via-slate-200 to-slate-300 p-8 rounded-lg">
+        <div className="relative p-8 rounded-lg border border-slate-700">
           <div className="flex flex-col items-center">
-            <p className="text-lg text-gray-700 italic mb-4 text-center">
+            <p className="text-lg italic mb-4 text-center">
               "{testimonials[current].feedback}"
             </p>
-            <h3 className="text-xl font-semibold text-gray-900">
+            <h3 className="text-xl font-semibold">
               {testimonials[current].name}
             </h3>
-            <p className="text-sm text-gray-500">
-              {testimonials[current].location}
-            </p>
+            <p className="text-sm ">{testimonials[current].location}</p>
           </div>
 
           {/* Slider Controls */}
           <div className="absolute inset-y-0 left-0 flex items-center">
             <button
               onClick={handlePrev}
-              className="text-black font-semibold text-xl rounded-full p-2"
+              className=" font-semibold text-xs rounded-full p-5"
             >
               &lt;
             </button>
@@ -68,7 +66,7 @@ const CustomerTestimonials: React.FC = () => {
           <div className="absolute inset-y-0 right-0 flex items-center">
             <button
               onClick={handleNext}
-              className="text-black font-semibold text-xl rounded-full p-2"
+              className=" font-semibold text-xs rounded-full p-5"
             >
               &gt;
             </button>
