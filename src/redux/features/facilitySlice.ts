@@ -1,10 +1,11 @@
 import { TFacility } from "@/types/facility.type";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface FacilityState {
+export interface FacilityState {
   facilities: TFacility[];
   status: "idle" | "loading" | "failed";
 }
+
 
 const initialState: FacilityState = {
   facilities: [],

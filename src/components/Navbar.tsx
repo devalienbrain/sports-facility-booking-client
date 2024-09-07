@@ -98,7 +98,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          {user.currentUser ? (
+          {user ? (
             <Link to="/dashboard">
               <button className="flex items-center gap-1 border border-slate-600 py-2 px-4 rounded-md">
                 My Dashboard
@@ -121,7 +121,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="hover:text-green-400">Login</button>
+                <button className="hover:text-slate-400">Login</button>
               </Link>
               <Link to="/register">
                 <button className="border border-slate-700 hover:bg-slate-700 py-2 px-4 rounded-md">

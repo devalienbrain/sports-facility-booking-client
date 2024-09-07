@@ -1,16 +1,17 @@
 // src/components/Login.tsx
-import { useLoginUserMutation } from "@/redux/api";
+import { useLoginUserMutation } from "../redux/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setUser } from "@/redux/features/userSlice";
+import { setUser } from "../redux/features/userSlice";
+// import { useAppDispatch } from "@/redux/hook";
+import { useAppDispatch } from "../redux/hook";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [loginUser, { isLoading }] = useLoginUserMutation();
 
@@ -19,7 +20,10 @@ const Login = () => {
     try {
       const response = await loginUser({ email, password }).unwrap();
       if (response.success) {
-        console.log(response.data, response.token);
+        const data = response.data;
+        const token = response.token;
+        console.log({ data });
+        console.log({ token });
         localStorage.setItem("accessToken", response.token);
         dispatch(setUser(response.data)); // Store user in Redux
         navigate("/dashboard");

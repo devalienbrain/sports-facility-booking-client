@@ -3,8 +3,6 @@ import Layout from "@/layout/Layout";
 import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
 import AddFacility from "@/pages/DashboardPages/AddFacility";
-import BookingPage from "@/pages/DashboardPages/BookingPage";
-import FacilityListingPage from "@/pages/DashboardPages/FacilityListing";
 import ManageBookings from "@/pages/DashboardPages/ManageBooking";
 import ManageFacilities from "@/pages/DashboardPages/ManageFacilities";
 import ManageUsers from "@/pages/DashboardPages/ManageUsers";

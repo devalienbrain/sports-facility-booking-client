@@ -1,50 +1,3 @@
-
-
-// import { createSlice } from "@reduxjs/toolkit";
-// import { RootState } from "../store";
-
-// export type TUser = {
-//   userId: string;
-//   role: string;
-//   iat: number;
-//   exp: number;
-// };
-
-// type TAuthState = {
-//   currentUser: null | TUser;
-//   token: null | string;
-// };
-
-// const initialState: TAuthState = {
-//   currentUser: null,
-//   token: null,
-// };
-
-// const userSlice = createSlice({
-//   name: "user",
-//   initialState,
-//   reducers: {
-//     setUser: (state, action) => {
-//       console.log(action.payload);
-//       // const { user, token } = action.payload;
-//       state.currentUser = action.payload;
-//       // state.token = token;
-//     },
-//     logout: (state) => {
-//       state.currentUser = null;
-//       state.token = null;
-//     },
-//   },
-// });
-
-// export const { setUser, logout } = userSlice.actions;
-
-// export default userSlice.reducer;
-
-// export const useCurrentToken = (state: RootState) => state.user.token;
-// export const selectCurrentUser = (state: RootState) => state.user.currentUser;
-
-
 // src/redux/userSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { api } from "../api";
@@ -60,12 +13,12 @@ export type TUser = {
 };
 
 type TAuthState = {
-  currentUser: TUser | null;
+  user: TUser | null;
   token: string | null;
 };
 
 const initialState: TAuthState = {
-  currentUser: null,
+  user: null,
   token: null,
 };
 
@@ -74,11 +27,12 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action: PayloadAction<{ user: TUser; token: string }>) => {
-      state.currentUser = action.payload.user;
+      console.log(action.payload);
+      state.user = action.payload;
       state.token = action.payload.token;
     },
     logout: (state) => {
-      state.currentUser = null;
+      state.user = null;
       state.token = null;
     },
   },
@@ -87,7 +41,7 @@ const userSlice = createSlice({
     builder.addMatcher(
       api.endpoints.loginUser.matchFulfilled,
       (state, { payload }) => {
-        state.currentUser = payload.user;
+        state.user = payload.user;
         state.token = payload.accessToken;
       }
     );
@@ -95,7 +49,7 @@ const userSlice = createSlice({
     builder.addMatcher(
       api.endpoints.registerUser.matchFulfilled,
       (state, { payload }) => {
-        state.currentUser = payload.user;
+        state.user = payload.user;
         state.token = payload.accessToken;
       }
     );
@@ -108,4 +62,4 @@ export default userSlice.reducer;
 
 // Selectors
 export const useCurrentToken = (state: RootState) => state.user.token;
-export const selectCurrentUser = (state: RootState) => state.user.currentUser;
+export const selectCurrentUser = (state: RootState) => state.user.user;
