@@ -5,7 +5,7 @@ import logo from "/resources/logo.png";
 
 const Navbar = () => {
   // Access the user from Redux store
-  const user = useSelector((state: RootState) => state.user);
+  const user = useSelector((state: RootState) => state.user.currentUser);
   console.log(user);
   return (
     <>
@@ -98,7 +98,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          {user.user ? (
+          {user ? (
             <Link to="/dashboard">
               <button className="flex items-center gap-1 border border-slate-600 rounded-3xl py-2 px-4 ">
                 My Dashboard

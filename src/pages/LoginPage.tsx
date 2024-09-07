@@ -1,9 +1,8 @@
-// src/components/Login.tsx
-import { useLoginUserMutation } from "../redux/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { setUser } from "../redux/features/userSlice";
+import { useLoginUserMutation } from "../redux/api";
 import { useAppDispatch } from "../redux/hook";
+import { setUser } from "../redux/features/userSlice";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -19,12 +18,13 @@ const Login = () => {
     try {
       const response = await loginUser({ email, password }).unwrap();
       if (response.success) {
-        const data = response.data;
-        const token = response.token;
-        console.log({ data });
-        console.log({ token });
-        localStorage.setItem("accessToken", response.token);
-        dispatch(setUser(response.data)); // Store user in Redux
+        const { data, token } = response;
+        console.log({ data, token });
+
+        // Store token in localStorage if necessary
+        localStorage.setItem("accessToken", token);
+        dispatch(setUser({ user: data, token }));
+
         navigate("/dashboard");
       }
     } catch (err) {

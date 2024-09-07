@@ -1,4 +1,3 @@
-// src/redux/userSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { api } from "../api";
 import { RootState } from "../store";
@@ -13,13 +12,13 @@ export type TUser = {
 };
 
 type TAuthState = {
-  user: TUser | null;
-  token: string | null;
+  currentUser: TUser | null;
+  currentToken: string | null;
 };
 
 const initialState: TAuthState = {
-  user: null,
-  token: null,
+  currentUser: null,
+  currentToken: null,
 };
 
 const userSlice = createSlice({
@@ -28,13 +27,12 @@ const userSlice = createSlice({
   reducers: {
     setUser: (state, action: PayloadAction<{ user: TUser; token: string }>) => {
       console.log(action.payload);
-      state.user = action.payload;
-      state.token = action.payload.token;
+      state.currentUser = action.payload.user;
+      state.currentToken = action.payload.token;
     },
     logout: (state) => {
-      state.user = null;
       state.currentUser = null;
-      state.token = null;
+      state.currentToken = null;
     },
   },
   extraReducers: (builder) => {
@@ -42,16 +40,16 @@ const userSlice = createSlice({
     builder.addMatcher(
       api.endpoints.loginUser.matchFulfilled,
       (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.accessToken;
+        state.currentUser = payload.user; // Update user
+        state.currentToken = payload.accessToken; // Update token
       }
     );
     // Handle registerUser success
     builder.addMatcher(
       api.endpoints.registerUser.matchFulfilled,
       (state, { payload }) => {
-        state.user = payload.user;
-        state.token = payload.accessToken;
+        state.currentUser = payload.user; // Update user
+        state.currentToken = payload.accessToken; // Update token
       }
     );
   },
@@ -62,5 +60,5 @@ export const { setUser, logout } = userSlice.actions;
 export default userSlice.reducer;
 
 // Selectors
-export const useCurrentToken = (state: RootState) => state.user.token;
-export const selectCurrentUser = (state: RootState) => state.user.user;
+export const useCurrentToken = (state: RootState) => state.user.currentToken;
+export const selectCurrentUser = (state: RootState) => state.user.currentUser;
