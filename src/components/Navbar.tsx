@@ -6,7 +6,7 @@ import logo from "/resources/logo.png";
 const Navbar = () => {
   // Access the user from Redux store
   const user = useSelector((state: RootState) => state.user);
-
+  console.log(user);
   return (
     <>
       <div className="navbar">
@@ -98,9 +98,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end flex items-center gap-2">
-          {user ? (
+          {user.user ? (
             <Link to="/dashboard">
-              <button className="flex items-center gap-1 border border-slate-600 py-2 px-4 rounded-md">
+              <button className="flex items-center gap-1 border border-slate-600 rounded-3xl py-2 px-4 ">
                 My Dashboard
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +124,7 @@ const Navbar = () => {
                 <button className="hover:text-slate-400">Login</button>
               </Link>
               <Link to="/register">
-                <button className="border border-slate-700 hover:bg-slate-700 py-2 px-4 rounded-md">
+                <button className="border border-slate-700 hover:bg-slate-700 py-2 px-4 rounded-3xl">
                   Register
                 </button>
               </Link>

@@ -15,7 +15,7 @@ const ErrorPage = () => {
         <h2 className="text-5xl md:text-9xl font-black">4 O 4</h2>
         <h1 className="text-2xl font-black text-red-600"> e r r o r !</h1>
         <Link to={"/"}>
-          <div className="flex gap-2 text-sm bg-purple-500 py-3 px-5 rounded-md hover:bg-lime-500 hover:text-black text-white">
+          <div className="flex gap-2 text-sm border rounded-3xl py-3 px-5 hover:bg-lime-500 hover:text-black text-white">
             <span className="font-semibold">Go Sportly home!</span>
           </div>
         </Link>

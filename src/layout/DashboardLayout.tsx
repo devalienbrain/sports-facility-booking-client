@@ -1,9 +1,9 @@
 // src/components/Dashboard.tsx
 import React from "react";
-import { RootState } from "@/redux/store";
+import { RootState } from "../redux/store";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import { logout } from "@/redux/features/userSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
+import { logout } from "../redux/features/userSlice";
 import logo from "/resources/logo.png";
 import { FaAd, FaHome, FaList, FaShoppingCart, FaUsers } from "react-icons/fa";
 
@@ -94,25 +94,13 @@ const Dashboard: React.FC = () => {
                   <li>
                     <NavLink to="/dashboard/adminHome">
                       <FaHome></FaHome>
-                      Admin Home
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/users">
-                      <FaUsers></FaUsers>
-                      All Users
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink to="/dashboard/facilities">
-                      <FaList></FaList>
-                      All Facilities
+                      user Home
                     </NavLink>
                   </li>
                   <li>
                     <NavLink to="/dashboard/bookings">
                       <FaShoppingCart></FaShoppingCart>
-                      All Bookings
+                      My Bookings
                     </NavLink>
                   </li>
 
@@ -121,7 +109,7 @@ const Dashboard: React.FC = () => {
                   <li>
                     <NavLink to="/dashboard/addAPet">
                       <FaAd></FaAd>
-                      <p className="hover:underline">Add a Facility</p>
+                      <p className="hover:underline">Book a Facility</p>
                     </NavLink>
                   </li>
                 </ul>

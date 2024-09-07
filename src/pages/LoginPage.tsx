@@ -3,7 +3,6 @@ import { useLoginUserMutation } from "../redux/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { setUser } from "../redux/features/userSlice";
-// import { useAppDispatch } from "@/redux/hook";
 import { useAppDispatch } from "../redux/hook";
 
 const Login = () => {
