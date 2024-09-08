@@ -3,6 +3,7 @@ import Layout from "@/layout/Layout";
 import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
 import AddFacility from "@/pages/DashboardPages/AddFacility";
+import AdminHome from "@/pages/DashboardPages/AdminHome";
 import ManageBookings from "@/pages/DashboardPages/ManageBooking";
 import ManageFacilities from "@/pages/DashboardPages/ManageFacilities";
 import ManageUsers from "@/pages/DashboardPages/ManageUsers";
@@ -54,6 +55,11 @@ const router = createBrowserRouter([
     path: "dashboard",
     element: <Dashboard />,
     children: [
+      {
+        // path: "dashboard",
+        index: true,
+        element: <AdminHome />,
+      },
       {
         path: "facilities",
         element: <ManageFacilities />,
