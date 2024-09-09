@@ -56,7 +56,7 @@ const AdminDashboard: React.FC = () => {
         {/* Sidebar and Content */}
         <div className="flex flex-col md:flex-row">
           {/* Sidebar */}
-          <div className="bg-slate-100 text-slate-950 p-6 w-full md:w-64 flex flex-row md:flex-col text-xl font-semibold pt-20 text-left gap-3">
+          <div className="bg-slate-100 text-slate-950 p-6 w-full md:w-64 flex flex-row md:flex-col text-xl font-semibold text-left gap-3">
             <ul className="menu p-4">
               <li>
                 <div>
@@ -96,13 +96,6 @@ const AdminDashboard: React.FC = () => {
             ) : (
               <ul className="menu p-4">
                 <li>
-                  <div>
-                    <FaHome />
-                    User Home
-                  </div>
-                </li>
-
-                <li>
                   <NavLink to="/dashboard/bookings">
                     <FaShoppingCart />
                     My Bookings
@@ -130,7 +123,7 @@ const AdminDashboard: React.FC = () => {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 bg-white text-black p-6 h-screen overflow-scroll">
+          <div className="flex-1 bg-white text-black p-6 rounded-xl shadow-lg h-screen overflow-scroll">
             <Outlet />
           </div>
         </div>
