@@ -1,5 +1,5 @@
-// src/components/ManageBookings.tsx
 import { useDeleteBookingMutation, useGetAllBookingsQuery } from "@/redux/api";
+import { TBooking } from "@/types/booking.type";
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const ManageBookings: React.FC = () => {
       try {
         await deleteBooking(id).unwrap();
         alert("Booking deleted successfully");
-        refetch();
+        refetch(); // Refetch after deletion to update the list
       } catch (err) {
         console.error("Failed to delete booking:", err);
         alert("Failed to delete booking");
@@ -27,9 +27,9 @@ const ManageBookings: React.FC = () => {
     }
   };
 
-  // if (isLoading) return <div className="p-4">Loading...</div>;
-  // if (error)
-  //   return <div className="p-4 text-red-500">Error loading bookings</div>;
+  if (isLoading) return <div className="p-4">Loading...</div>;
+  if (error)
+    return <div className="p-4 text-red-500">Error loading bookings</div>;
 
   return (
     <div className="p-4">
@@ -42,7 +42,7 @@ const ManageBookings: React.FC = () => {
           Add Booking
         </Link>
       </div>
-      <table className="min-w-full bg-white">
+      <table className="min-w-full bg-white border">
         <thead>
           <tr>
             <th className="py-2 px-4 border-b">Facility</th>
@@ -53,12 +53,12 @@ const ManageBookings: React.FC = () => {
         </thead>
         <tbody>
           {bookings &&
-            bookings.map((booking) => (
+            bookings.map((booking: TBooking) => (
               <tr key={booking._id} className="hover:bg-gray-100">
                 <td className="py-2 px-4 border-b">{booking.facilityName}</td>
-                <td className="py-2 px-4 border-b">{booking.userName}</td>
+                <td className="py-2 px-4 border-b">{booking.userId}</td> {/* Assuming userId for now */}
                 <td className="py-2 px-4 border-b">
-                  {new Date(booking.date).toLocaleDateString()}
+                  {new Date(booking.bookingDate).toLocaleDateString()}
                 </td>
                 <td className="py-2 px-4 border-b">
                   <Link
