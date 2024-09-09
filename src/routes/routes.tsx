@@ -3,7 +3,7 @@ import Layout from "@/layout/Layout";
 import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
 import AddFacility from "@/pages/DashboardPages/AddFacility";
-import AdminHome from "@/pages/DashboardPages/AdminHome";
+import DashbordHomeUser from "@/pages/DashboardPages/DashbordHomeUser";
 import ManageBookings from "@/pages/DashboardPages/ManageBooking";
 import ManageFacilities from "@/pages/DashboardPages/ManageFacilities";
 import ManageUsers from "@/pages/DashboardPages/ManageUsers";
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
       {
         // path: "dashboard",
         index: true,
-        element: <AdminHome />,
+        element: <DashbordHomeUser />,
       },
       {
         path: "facilities",

@@ -13,6 +13,7 @@ import {
   FaShoppingCart,
   FaUsers,
 } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
 import { useGetAllBookingsQuery } from "../redux/api"; // API call for fetching all bookings
 
 const AdminDashboard: React.FC = () => {
@@ -56,14 +57,16 @@ const AdminDashboard: React.FC = () => {
         <div className="flex flex-col md:flex-row">
           {/* Sidebar */}
           <div className="bg-slate-100 text-slate-950 p-6 w-full md:w-64 flex flex-row md:flex-col text-xl font-semibold pt-20 text-left gap-3">
+            <ul className="menu p-4">
+              <li>
+                <div>
+                  <FaHome />
+                  {user?.role === "admin" ? "Admin" : "User"} Home
+                </div>
+              </li>
+            </ul>
             {user?.role === "admin" ? (
               <ul className="menu p-4">
-                <li>
-                  <div>
-                    <FaHome />
-                    Admin Home
-                  </div>
-                </li>
                 <li>
                   <NavLink to="/dashboard/users">
                     <FaUsers />
@@ -90,21 +93,44 @@ const AdminDashboard: React.FC = () => {
                   </NavLink>
                 </li>
               </ul>
-            ) : null}
+            ) : (
+              <ul className="menu p-4">
+                <li>
+                  <div>
+                    <FaHome />
+                    User Home
+                  </div>
+                </li>
+
+                <li>
+                  <NavLink to="/dashboard/bookings">
+                    <FaShoppingCart />
+                    My Bookings
+                  </NavLink>
+                </li>
+                <div className="divider"></div>
+                <li>
+                  <NavLink to="/dashboard/addFacility">
+                    <FaAd />
+                    Book a Facility
+                  </NavLink>
+                </li>
+              </ul>
+            )}
             <ul className="menu p-4">
               <li>
                 <div>
-                  <FaQuidditch />
-                  <button onClick={handleLogout} className="hover:text-red-600">
+                  <MdLogout />
+                  <span onClick={handleLogout} className="hover:text-red-600">
                     Logout
-                  </button>
+                  </span>
                 </div>
               </li>
             </ul>
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 bg-white text-black p-6">
+          <div className="flex-1 bg-white text-black p-6 h-screen overflow-scroll">
             <Outlet />
           </div>
         </div>

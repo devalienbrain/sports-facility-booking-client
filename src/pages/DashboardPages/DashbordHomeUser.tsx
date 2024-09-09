@@ -1,15 +1,13 @@
 import { useAppSelector } from "../../redux/hook";
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import profilePictureUrl from "../../../public/resources/alienDev.jpg";
 
-const AdminHome: React.FC = () => {
+const DashbordHomeUser: React.FC = () => {
   const user = useAppSelector((state) => state.user.currentUser);
-  const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6">
-      <div className="w-full max-w-md border rounded-xl p-8 text-center">
+    <div className="min-h-screen flex flex-col items-center justify-start p-6">
+      <div className="w-full max-w-md rounded-xl p-8 text-center">
         {/* Profile Picture */}
         <img
           src={profilePictureUrl}
@@ -19,12 +17,12 @@ const AdminHome: React.FC = () => {
 
         {/* Welcome message */}
         <h1 className="text-2xl font-bold text-black mb-4">
-          Welcome, {user?.name}!
+          Welcome, <span className="font-black"> {user?.name}!</span>
         </h1>
 
         {/* User Info */}
         <p className="text-gray-600 mb-4">
-          Role: <span className="font-semibold capitalize">{user?.role}</span>
+          Role: <span className="font-bold capitalize">{user?.role}</span>
         </p>
 
         <div className="space-y-2">
@@ -43,4 +41,4 @@ const AdminHome: React.FC = () => {
   );
 };
 
-export default AdminHome;
+export default DashbordHomeUser;
