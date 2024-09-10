@@ -6,7 +6,7 @@ const DashbordHomeUser: React.FC = () => {
   const user = useAppSelector((state) => state.user.currentUser);
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-start p-6">
+    <div className="flex flex-col items-center justify-start p-6">
       <div className="w-full max-w-md rounded-xl p-8 text-center">
         {/* Profile Picture */}
         <img

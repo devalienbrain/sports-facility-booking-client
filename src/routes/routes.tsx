@@ -3,6 +3,7 @@ import Layout from "@/layout/Layout";
 import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
 import AddFacility from "@/pages/DashboardPages/AddFacility";
+import BookingPage from "@/pages/DashboardPages/BookingPage";
 import DashbordHomeUser from "@/pages/DashboardPages/DashbordHomeUser";
 import ManageBookings from "@/pages/DashboardPages/ManageBooking";
 import ManageFacilities from "@/pages/DashboardPages/ManageFacilities";
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "bookings",
         element: <ManageBookings />,
+      },
+      {
+        path: "bookings2",
+        element: <BookingPage />,
       },
       {
         path: "users",

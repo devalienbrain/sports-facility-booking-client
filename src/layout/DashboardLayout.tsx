@@ -1,4 +1,3 @@
-// AdminDashboard.tsx
 import React from "react";
 import { RootState } from "../redux/store";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -33,7 +32,7 @@ const AdminDashboard: React.FC = () => {
 
   return (
     <>
-      <div className="bg-white text-black">
+      <div className="bg-white text-black h-screen flex flex-col">
         {/* Navbar */}
         <div className="flex justify-between items-center shadow-lg bg-slate-900 text-white px-6 py-2">
           <div className="flex justify-start">
@@ -54,9 +53,9 @@ const AdminDashboard: React.FC = () => {
         </div>
 
         {/* Sidebar and Content */}
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-1 overflow-hidden">
           {/* Sidebar */}
-          <div className="bg-slate-100 text-slate-950 p-6 w-full md:w-64 flex flex-row md:flex-col text-xl font-semibold text-left gap-3">
+          <div className="bg-slate-100 text-slate-950 p-6 w-full md:w-64 flex flex-col text-xl font-semibold text-left gap-3">
             <ul className="menu p-4">
               <li>
                 <div>
@@ -80,9 +79,15 @@ const AdminDashboard: React.FC = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/bookings">
+                  <NavLink to="/dashboard/bookings2">
                     <FaShoppingCart />
                     All Bookings
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/bookings">
+                    <FaShoppingCart />
+                    All Bookings2
                   </NavLink>
                 </li>
                 <div className="divider"></div>
@@ -123,7 +128,7 @@ const AdminDashboard: React.FC = () => {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1 bg-white text-black p-6 rounded-xl shadow-lg h-screen overflow-scroll">
+          <div className="flex-1 bg-white text-black p-6 h-full overflow-y-auto">
             <Outlet />
           </div>
         </div>
@@ -131,5 +136,4 @@ const AdminDashboard: React.FC = () => {
     </>
   );
 };
-
 export default AdminDashboard;
