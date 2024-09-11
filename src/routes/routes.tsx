@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         element: <ManageFacilities />,
       },
       {
-        path: "facility/add",
+        path: "addFacility",
         element: <AddFacility />,
       },
       {
@@ -74,7 +74,7 @@ const router = createBrowserRouter([
         element: <ManageBookings />,
       },
       {
-        path: "bookings2",
+        path: "bookAFacility",
         element: <BookingPage />,
       },
       {

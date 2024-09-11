@@ -67,27 +67,15 @@ const AdminDashboard: React.FC = () => {
             {user?.role === "admin" ? (
               <ul className="menu p-4">
                 <li>
-                  <NavLink to="/dashboard/users">
-                    <FaUsers />
-                    All Users
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink to="/dashboard/facilities">
                     <FaList />
                     All Facilities
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/bookings2">
-                    <FaShoppingCart />
-                    All Bookings
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink to="/dashboard/bookings">
                     <FaShoppingCart />
-                    All Bookings2
+                    All Bookings
                   </NavLink>
                 </li>
                 <div className="divider"></div>
@@ -95,6 +83,12 @@ const AdminDashboard: React.FC = () => {
                   <NavLink to="/dashboard/addFacility">
                     <FaAd />
                     Add a Facility
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/register">
+                    <FaUsers />
+                    Create An Admin
                   </NavLink>
                 </li>
               </ul>
@@ -107,10 +101,11 @@ const AdminDashboard: React.FC = () => {
                   </NavLink>
                 </li>
                 <div className="divider"></div>
+
                 <li>
-                  <NavLink to="/dashboard/addFacility">
-                    <FaAd />
-                    Book a Facility
+                  <NavLink to="/dashboard/bookAFacility">
+                    <FaShoppingCart />
+                    Book A Facility
                   </NavLink>
                 </li>
               </ul>
