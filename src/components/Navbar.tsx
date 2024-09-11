@@ -6,7 +6,7 @@ import logo from "/resources/logo.png";
 const Navbar = () => {
   // Access the user from Redux store
   const user = useSelector((state: RootState) => state.user.currentUser);
-  console.log(user);
+  // console.log(user);
   return (
     <>
       <div className="navbar">
@@ -61,13 +61,13 @@ const Navbar = () => {
           </div>
           <Link to="/">
             <div className="flex items-center gap-2">
-              <img src={logo} alt="Logo" className="w-7 bg-black/10" />
+              <img src={logo} alt="Logo" className="w-7" />
               <p className="font-bold text-2xl">Sportly</p>
             </div>
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
+          <ul className="menu menu-horizontal px-1 text-sm font-semibold">
             <li>
               <Link to="/about-us">
                 <p>About</p>
@@ -100,7 +100,7 @@ const Navbar = () => {
         <div className="navbar-end flex items-center gap-2">
           {user ? (
             <Link to="/dashboard">
-              <button className="flex items-center gap-1 border border-slate-600 rounded-3xl py-2 px-4 ">
+              <button className="flex items-center gap-1 border border-slate-300 rounded-3xl py-2 px-4 ">
                 My Dashboard
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -121,10 +121,12 @@ const Navbar = () => {
           ) : (
             <>
               <Link to="/login">
-                <button className="hover:text-slate-400">Login</button>
+                <button className="hover:text-slate-200 font-semibold">
+                  Login
+                </button>
               </Link>
               <Link to="/register">
-                <button className="border border-slate-700 hover:bg-slate-700 py-2 px-4 rounded-3xl">
+                <button className="border hover:bg-slate-700 py-2 px-4 rounded-3xl font-semibold">
                   Register
                 </button>
               </Link>

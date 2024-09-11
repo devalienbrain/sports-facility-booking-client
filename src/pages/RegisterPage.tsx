@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import logo from "/resources/logo.png";
 
 const Register = () => {
   const [name, setName] = useState("");
@@ -47,6 +49,14 @@ const Register = () => {
   return (
     <div className="flex justify-center items-center min-h-screen py-20">
       <div className="w-full max-w-lg">
+        <div className="pb-10 flex justify-center">
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <img src={logo} alt="Logo" className="w-7" />
+              <p className="font-bold text-xl">Sportly Home</p>
+            </div>
+          </Link>
+        </div>
         <form
           onSubmit={handleRegister}
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -146,6 +156,9 @@ const Register = () => {
               Sign Up
             </button>
           </div>
+          <p className="text-center text-gray-500 text-xs">
+            Already registered? You may <Link to="/login">login</Link>.
+          </p>
         </form>
         <p className="text-center text-gray-500 text-xs">
           &copy;2024 Sportly. All rights reserved.

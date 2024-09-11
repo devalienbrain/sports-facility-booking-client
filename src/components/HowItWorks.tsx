@@ -54,10 +54,10 @@ const HowItWorks: React.FC = () => {
           {steps.map((step) => (
             <div
               key={step.id}
-              className="flex flex-col items-center bg-white p-6 rounded-lg shadow-md"
+              className="flex flex-col items-center bg-black/25 text-white p-6 rounded-lg shadow-md"
             >
               <div className="text-4xl rounded-full p-4 mb-4">{step.icon}</div>
-              <h3 className="text-xl text-black font-semibold mb-2 text-center">
+              <h3 className="text-xl font-semibold mb-2 text-center">
                 {step.title}
               </h3>
               <p className="text-gray-600 text-center">{step.description}</p>

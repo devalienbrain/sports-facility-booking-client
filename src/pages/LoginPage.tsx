@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../redux/api";
 import { useAppDispatch } from "../redux/hook";
 import { setUser } from "../redux/features/userSlice";
+import logo from "/resources/logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -35,6 +36,14 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center min-h-screen py-20">
       <div className="w-full max-w-lg">
+        <div className="pb-10 flex justify-center">
+          <Link to="/">
+            <div className="flex items-center gap-2">
+              <img src={logo} alt="Logo" className="w-7" />
+              <p className="font-bold text-xl">Sportly Home</p>
+            </div>
+          </Link>
+        </div>
         <form
           onSubmit={handleLogin}
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
@@ -89,6 +98,9 @@ const Login = () => {
               Forgot password?
             </a>
           </div>
+          <p className="text-center text-gray-500 text-xs">
+            Not registered? <Link to="/register">register</Link> please.
+          </p>
         </form>
         <p className="text-center text-gray-500 text-xs">
           &copy;2024 Sportly. All rights reserved.

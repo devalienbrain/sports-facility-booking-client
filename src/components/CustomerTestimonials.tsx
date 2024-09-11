@@ -43,7 +43,7 @@ const CustomerTestimonials: React.FC = () => {
         <h2 className="text-5xl font-black text-center mb-8 ">
           Customer Testimonials
         </h2>
-        <div className="relative p-8 rounded-lg border border-slate-700">
+        <div className="relative p-8 rounded-2xl border border-slate-700">
           <div className="flex flex-col items-center">
             <p className="text-lg italic mb-4 text-center">
               "{testimonials[current].feedback}"

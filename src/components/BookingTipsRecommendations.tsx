@@ -51,11 +51,11 @@ const BookingTipsRecommendations: React.FC = () => {
           {bookingTips
             .slice(0, showAllTips ? bookingTips.length : 3)
             .map((tip) => (
-              <div key={tip.id} className="bg-white/10 rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-bold mb-2">
+              <div key={tip.id} className="bg-black/10 rounded-lg shadow-md p-6">
+                <h3 className="text-lg font-bold mb-2">
                   {tip.title}
                 </h3>
-                <p className="">{tip.content}</p>
+                <p className="text-sm text-slate-100">{tip.content}</p>
               </div>
             ))}
         </div>

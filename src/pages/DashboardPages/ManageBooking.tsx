@@ -1,4 +1,5 @@
-import { useDeleteBookingMutation, useGetAllBookingsQuery } from "../../redux/api";
+// import { useDeleteBookingMutation, useGetAllBookingsQuery } from "../../redux/api";
+import { useDeleteBookingMutation, useGetAllBookingsQuery } from "@/redux/api";
 import { TBooking } from "../../types/booking.type";
 import React from "react";
 import { Link } from "react-router-dom";
@@ -10,9 +11,10 @@ const ManageBookings: React.FC = () => {
     isLoading,
     refetch,
   } = useGetAllBookingsQuery();
-  const [deleteBooking] = useDeleteBookingMutation();
 
   console.log(bookings);
+
+  const [deleteBooking] = useDeleteBookingMutation();
 
   const handleDelete = async (id: string) => {
     if (window.confirm("Are you sure you want to delete this booking?")) {
@@ -28,9 +30,10 @@ const ManageBookings: React.FC = () => {
   };
 
   if (isLoading) return <div className="p-4">Loading...</div>;
-  if (error)
+  if (error) {
+    console.log(error);
     return <div className="p-4 text-red-500">Error loading bookings</div>;
-
+  }
   return (
     <div className="p-4">
       <div className="flex justify-between items-center mb-4">
@@ -53,10 +56,11 @@ const ManageBookings: React.FC = () => {
         </thead>
         <tbody>
           {bookings &&
-            bookings.map((booking: TBooking) => (
+            bookings?.data.map((booking: TBooking) => (
               <tr key={booking._id} className="hover:bg-gray-100">
                 <td className="py-2 px-4 border-b">{booking.facilityName}</td>
-                <td className="py-2 px-4 border-b">{booking.userId}</td> {/* Assuming userId for now */}
+                <td className="py-2 px-4 border-b">{booking.userId}</td>{" "}
+                {/* Assuming userId for now */}
                 <td className="py-2 px-4 border-b">
                   {new Date(booking.bookingDate).toLocaleDateString()}
                 </td>

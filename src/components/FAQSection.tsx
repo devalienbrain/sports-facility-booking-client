@@ -49,7 +49,7 @@ const FAQSection: React.FC = () => {
         </h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.id} className="border border-slate-800 rounded-lg shadow-md p-4">
+            <div key={faq.id} className="border border-slate-800 rounded-2xl shadow-md p-4">
               <button
                 className="w-full text-left flex justify-between items-center"
                 onClick={() => toggleFAQ(faq.id)}

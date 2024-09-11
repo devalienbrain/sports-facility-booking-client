@@ -1,4 +1,4 @@
-import { useCheckAvailabilityQuery, useCreateBookingMutation } from "@/redux/api";
+import { useCheckAvailabilityQuery, useCreateBookingMutation } from "../../redux/api";
 import React, { useState } from "react";
 
 

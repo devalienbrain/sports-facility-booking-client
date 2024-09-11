@@ -21,8 +21,8 @@ const Banner = () => {
                 Book your favorite sports facility easily and quickly.
               </p>
               <a
-                href="#booking"
-                className="btn border border-slate-800 hover:bg-slate-800"
+                href="#featuredItems"
+                className="btn border-none bg-white/50 text-black hover:bg-white"
               >
                 Book Now
               </a>
@@ -35,12 +35,8 @@ const Banner = () => {
           </div>
 
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-30">
-            <a href="#slide4" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle">
-              ❯
-            </a>
+            <a href="#slide4">❮</a>
+            <a href="#slide2">❯</a>
           </div>
         </div>
 
@@ -56,8 +52,8 @@ const Banner = () => {
                 Get access to top-notch sports equipment and amenities.
               </p>
               <a
-                href="#booking"
-                className="btn border border-slate-800 hover:bg-slate-800"
+                href="#featuredItems"
+                className="btn border-none bg-white/50 text-black hover:bg-white"
               >
                 Book Now
               </a>
@@ -69,12 +65,8 @@ const Banner = () => {
           </div>
 
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-30">
-            <a href="#slide1" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide3" className="btn btn-circle">
-              ❯
-            </a>
+            <a href="#slide1">❮</a>
+            <a href="#slide3">❯</a>
           </div>
         </div>
 
@@ -90,8 +82,8 @@ const Banner = () => {
                 Choose your time and facility from the comfort of your home.
               </p>
               <a
-                href="#booking"
-                className="btn border border-slate-800 hover:bg-slate-800"
+                href="#featuredItems"
+                className="btn border-none bg-white/50 text-black hover:bg-white"
               >
                 Book Now
               </a>
@@ -103,12 +95,8 @@ const Banner = () => {
           </div>
 
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-30">
-            <a href="#slide2" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide4" className="btn btn-circle">
-              ❯
-            </a>
+            <a href="#slide2">❮</a>
+            <a href="#slide4">❯</a>
           </div>
         </div>
 
@@ -124,8 +112,8 @@ const Banner = () => {
                 Reserve your spot and enjoy a great time with friends.
               </p>
               <a
-                href="#booking"
-                className="btn border border-slate-800 hover:bg-slate-800"
+                href="#featuredItems"
+                className="btn border-none bg-white/50 text-black hover:bg-white"
               >
                 Book Now
               </a>
@@ -137,12 +125,8 @@ const Banner = () => {
           </div>
 
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between z-30">
-            <a href="#slide3" className="btn btn-circle">
-              ❮
-            </a>
-            <a href="#slide1" className="btn btn-circle">
-              ❯
-            </a>
+            <a href="#slide3">❮</a>
+            <a href="#slide1">❯</a>
           </div>
         </div>
       </div>

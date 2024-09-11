@@ -9,9 +9,11 @@ export const api = createApi({
     baseUrl: "http://localhost:5000",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token;
+      console.log(token);
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
+      console.log(headers);
       return headers;
     },
   }),
