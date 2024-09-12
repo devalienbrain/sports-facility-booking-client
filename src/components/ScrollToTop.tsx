@@ -30,7 +30,7 @@ const ScrollToTopButton = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-5 right-5 p-3 rounded-full bg-slate-400/5 z-10 ${
+      className={`fixed bottom-5 right-5 p-3 rounded-full bg-white text-black font-black text-xs z-10 ${
         isVisible ? "block" : "hidden"
       }`}
       aria-label="Scroll to Top"

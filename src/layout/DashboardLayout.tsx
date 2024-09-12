@@ -34,12 +34,12 @@ const AdminDashboard: React.FC = () => {
     <>
       <div className="bg-white text-black h-screen flex flex-col">
         {/* Navbar */}
-        <div className="flex justify-between items-center shadow-lg bg-slate-900 text-white px-6 py-2">
+        <div className="flex justify-between items-center shadow-lg bg-slate-900 text-white px-6 py-4">
           <div className="flex justify-start">
             <NavLink to="/">
               <div className="flex items-center gap-2">
                 <img src={logo} alt="Logo" className="w-7" />
-                <p className="font-bold text-2xl">Sportly</p>
+                <p className="font-black text-2xl">Sportly</p>
               </div>
             </NavLink>
           </div>
