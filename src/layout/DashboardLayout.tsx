@@ -8,8 +8,8 @@ import {
   FaAd,
   FaHome,
   FaList,
-  FaQuidditch,
   FaShoppingCart,
+  FaUser,
   FaUsers,
 } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
@@ -17,12 +17,11 @@ import { useGetAllBookingsQuery } from "../redux/api"; // API call for fetching 
 
 const AdminDashboard: React.FC = () => {
   const user = useAppSelector((state: RootState) => state.user.currentUser);
-  console.log({ user });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const { data: bookings = [], isLoading } = useGetAllBookingsQuery(); // Fetch all bookings
-  console.log({ bookings });
+
   if (!user) return <p>Loading...</p>;
 
   const handleLogout = () => {
@@ -32,111 +31,137 @@ const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <>
-      <div className="bg-white text-black h-screen flex flex-col">
-        {/* Navbar */}
-        <div className="flex justify-between items-center shadow-lg bg-slate-900 text-white px-6 py-4">
-          <div className="flex justify-start">
-            <NavLink to="/">
-              <div className="flex items-center gap-2">
-                <img src={logo} alt="Logo" className="w-7" />
-                <p className="font-black text-2xl">Sportly</p>
-              </div>
-            </NavLink>
+    <div className="bg-white text-black h-screen flex flex-col">
+      {/* Navbar */}
+      <div className="flex justify-between items-center shadow-lg px-6 py-4">
+        <NavLink to="/">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="Logo" className="w-7" />
+            <p className="font-black text-2xl">Sportly</p>
           </div>
-
-          <div className="flex justify-end items-center gap-2">
-            <div>
-              <img
-                src={user?.photoUrl}
-                className="w-9 h-9 rounded-full"
-                alt="User Photo"
-              />
-            </div>
-            <div className="flex justify-end text-right flex-col gap-1 text-xs">
-              <span className="font-bold text-sm">{user?.name}</span>
-              <span className="text-xs">{user?.email}</span>
-            </div>
+        </NavLink>
+        <div className="flex items-center gap-2">
+          <img
+            src={user?.photoUrl}
+            className="w-9 h-9 rounded-full"
+            alt="User Photo"
+          />
+          <div className="flex flex-col text-xs">
+            <span className="font-bold text-sm">{user?.name}</span>
+            <span className="text-xs">{user?.email}</span>
           </div>
         </div>
+      </div>
 
-        {/* Sidebar and Content */}
-        <div className="flex flex-1 overflow-hidden">
-          {/* Sidebar */}
-          <div className="bg-slate-100 text-slate-950 p-6 w-full md:w-64 flex flex-col text-xl font-semibold text-left gap-3">
-            <ul className="menu p-4">
-              <li>
-                <div>
-                  <FaHome />
-                  {user?.role === "admin" ? "Admin" : "User"} Home
-                </div>
-              </li>
-            </ul>
+      {/* Sidebar and Content */}
+      <div className="flex flex-col md:flex-row flex-1 overflow-scroll md:overflow-hidden">
+        {/* Sidebar for larger devices */}
+        <div className="hidden md:flex md:flex-col bg-slate-100 text-slate-950 p-6 w-64 text-xl font-semibold gap-3">
+          <ul className="menu p-4">
+            <li>
+              <NavLink to="/dashboard">
+                <FaHome /> {user?.role === "admin" ? "Admin" : "User"} Home
+              </NavLink>
+            </li>
             {user?.role === "admin" ? (
-              <ul className="menu p-4">
+              <>
+                <li>
+                  <NavLink to="/dashboard/users">
+                    <FaUser /> All User
+                  </NavLink>
+                </li>
                 <li>
                   <NavLink to="/dashboard/facilities">
-                    <FaList />
-                    All Facilities
+                    <FaList /> All Facilities
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/bookings">
-                    <FaShoppingCart />
-                    All Bookings
+                    <FaShoppingCart /> All Bookings
                   </NavLink>
                 </li>
-                <div className="divider"></div>
                 <li>
                   <NavLink to="/dashboard/addFacility">
-                    <FaAd />
-                    Add a Facility
+                    <FaAd /> Add a Facility
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to="/register">
-                    <FaUsers />
-                    Create An Admin
+                    <FaUsers /> Create An Admin
                   </NavLink>
                 </li>
-              </ul>
+              </>
             ) : (
-              <ul className="menu p-4">
+              <>
                 <li>
                   <NavLink to="/dashboard/bookings">
-                    <FaShoppingCart />
-                    My Bookings
+                    <FaShoppingCart /> My Bookings
                   </NavLink>
                 </li>
-                <div className="divider"></div>
-
                 <li>
                   <NavLink to="/dashboard/bookAFacility">
-                    <FaShoppingCart />
-                    Book A Facility
+                    <FaShoppingCart /> Book A Facility
                   </NavLink>
                 </li>
-              </ul>
+              </>
             )}
-            <ul className="menu p-4">
-              <li>
-                <div>
-                  <MdLogout />
-                  <span onClick={handleLogout} className="hover:text-red-600">
-                    Logout
-                  </span>
-                </div>
-              </li>
-            </ul>
-          </div>
+            <li>
+              <div
+                onClick={handleLogout}
+                className="flex items-center gap-2 cursor-pointer hover:text-red-600"
+              >
+                <MdLogout />
+                Logout
+              </div>
+            </li>
+          </ul>
+        </div>
 
-          {/* Main Content */}
-          <div className="flex-1 bg-white text-black p-6 h-full overflow-y-auto">
-            <Outlet />
+        {/* Sidebar for small devices */}
+        <div className="flex md:hidden bg-slate-100 text-slate-950 p-3 w-full text-sm font-semibold flex-row items-center justify-around">
+          <NavLink to="/dashboard">
+            <FaHome className="text-xl" />
+          </NavLink>
+          {user?.role === "admin" ? (
+            <>
+              <NavLink to="/dashboard/facilities">
+                <FaList className="text-xl" />
+              </NavLink>
+              <NavLink to="/dashboard/bookings">
+                <FaShoppingCart className="text-xl" />
+              </NavLink>
+              <NavLink to="/dashboard/addFacility">
+                <FaAd className="text-xl" />
+              </NavLink>
+              <NavLink to="/register">
+                <FaUsers className="text-xl" />
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/dashboard/bookings">
+                <FaShoppingCart className="text-xl" />
+              </NavLink>
+              <NavLink to="/dashboard/bookAFacility">
+                <FaShoppingCart className="text-xl" />
+              </NavLink>
+            </>
+          )}
+          <div
+            onClick={handleLogout}
+            className="cursor-pointer hover:text-red-600"
+          >
+            <MdLogout className="text-xl" />
           </div>
         </div>
+
+        {/* Main Content */}
+        <div className="flex-1 bg-white text-black p-6 h-full md:h-auto overflow-y-auto">
+          <Outlet />
+        </div>
       </div>
-    </>
+    </div>
   );
 };
+
 export default AdminDashboard;

@@ -66,7 +66,7 @@ const ManageBookings: React.FC = () => {
                 </td>
                 <td className="py-2 px-4 border-b">
                   <Link
-                    to={`/bookings/edit/${booking._id}`}
+                    to="/dashboard/updateFacility"
                     className="text-blue-500 mr-4"
                   >
                     Edit

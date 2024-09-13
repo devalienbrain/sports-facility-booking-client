@@ -8,6 +8,7 @@ import DashbordHomeUser from "@/pages/DashboardPages/DashbordHomeUser";
 import ManageBookings from "@/pages/DashboardPages/ManageBooking";
 import ManageFacilities from "@/pages/DashboardPages/ManageFacilities";
 import ManageUsers from "@/pages/DashboardPages/ManageUsers";
+import UpdateFacility from "@/pages/DashboardPages/UpdateFacility";
 import ErrorPage from "@/pages/ErrorPage/ErrorPage";
 import FacilityListing from "@/pages/FacilitiesList/FacilitiesList";
 import FacilityBooking from "@/pages/FacilityBooking/FacilityBooking";
@@ -66,8 +67,16 @@ const router = createBrowserRouter([
         element: <ManageFacilities />,
       },
       {
+        path: "users",
+        element: <ManageUsers />,
+      },
+      {
         path: "addFacility",
         element: <AddFacility />,
+      },
+      {
+        path: "updateFacility/:id",
+        element: <UpdateFacility />,
       },
       {
         path: "bookings",

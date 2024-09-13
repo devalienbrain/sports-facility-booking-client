@@ -32,42 +32,53 @@ const ManageFacilities: React.FC = () => {
     return <div className="p-4 text-red-500">Error loading facilities</div>;
 
   return (
-    <div className="p-4">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Manage Facilities</h1>
+    <div className="p-6 max-w-5xl mx-auto bg-gray-50 rounded-lg shadow-lg">
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-gray-700">Manage Facilities</h1>
         <Link
           to="/dashboard/facility/add"
-          className="bg-blue-500 text-white px-4 py-2 rounded"
+          className="bg-blue-500 hover:bg-blue-600 text-white px-5 py-2 rounded transition duration-300"
         >
           Add Facility
         </Link>
       </div>
-      <table className="min-w-full bg-white">
-        <thead>
+      <table className="min-w-full bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
+        <thead className="bg-blue-500 text-white">
           <tr>
-            <th className="py-2 px-4 border-b text-left">Name</th>
-            <th className="py-2 px-4 border-b text-left">Location</th>
-            <th className="py-2 px-4 border-b text-right">Actions</th>
+            <th className="py-3 px-5 text-left">#</th>
+            <th className="py-3 px-5 text-left">Name</th>
+            <th className="py-3 px-5 text-left">Location</th>
+            <th className="py-3 px-5 text-right">Actions</th>
           </tr>
         </thead>
         <tbody>
           {facilities &&
-            facilities?.data?.map((facility) => (
-              <tr key={facility._id} className="hover:bg-gray-100">
-                <td className="py-2 px-4 border-b text-sm font-semibold">{facility.name}</td>
-                <td className="py-2 px-4 border-b text-sm">{facility.location}</td>
-                <td className="py-2 px-4 border-b flex justify-end items-start">
+            facilities?.data?.map((facility, index) => (
+              <tr
+                key={facility._id}
+                className="hover:bg-gray-100 transition duration-200"
+              >
+                <td className="py-3 px-5 border-b text-sm font-medium text-gray-700">
+                  {index + 1}
+                </td>
+                <td className="py-3 px-5 border-b text-sm font-semibold text-gray-800">
+                  {facility.name}
+                </td>
+                <td className="py-3 px-5 border-b text-sm text-gray-600">
+                  {facility.location}
+                </td>
+                <td className="py-3 px-5 border-b flex justify-end items-center space-x-4">
                   <Link
-                    to={`/facility/edit/${facility._id}`}
-                    className="text-blue-500 mr-4"
+                    to={`/dashboard/updateFacility/${facility._id}`}
+                    className="text-blue-500 hover:text-blue-700 transition duration-200"
                   >
-                    <FaRegEdit />
+                    <FaRegEdit size={20} />
                   </Link>
                   <button
                     onClick={() => handleDelete(facility._id)}
-                    className="text-red-500"
+                    className="text-red-500 hover:text-red-700 transition duration-200"
                   >
-                    <TiDelete />
+                    <TiDelete size={20} />
                   </button>
                 </td>
               </tr>
