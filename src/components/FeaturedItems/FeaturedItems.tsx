@@ -23,7 +23,7 @@ const FeaturedItems: React.FC = () => {
       ) : error ? (
         <p>Failed to load facilities.</p>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
           {featuredFacilities.map((facility: any) => (
             <div key={facility._id} className="card bg-black/50 p-3">
               <figure>
@@ -34,11 +34,9 @@ const FeaturedItems: React.FC = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title">{facility.name}</h2>
-                <p>{facility.description}</p>
-                <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Learn more!</button>
-                </div>
+                <h2 className="card-title text-center justify-center font-black text-xl">{facility.name}</h2>
+                
+                <p className="tgext-sm font-light">{facility.description}</p>
               </div>
             </div>
           ))}

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "/resources/logo.png";
 
 const Register = () => {
   const [name, setName] = useState("");
+  const [photoUrl, setPhotoUrl] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
@@ -11,6 +12,8 @@ const Register = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [role, setRole] = useState("");
+
+ 
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -23,11 +26,12 @@ const Register = () => {
         },
         body: JSON.stringify({
           name,
+          photoUrl: "https://i.ibb.co.com/k6hTYW1/Alien-Dev.jpg",
           email,
           password,
           phone,
           address,
-          role: "admin",
+          role: "user",
         }),
       });
 
@@ -79,6 +83,23 @@ const Register = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
+              className="input input-bordered w-full max-w-lg"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="photoUrl"
+            >
+              PhotoUrl
+            </label>
+            <input
+              type="text"
+              id="photoUrl"
+              value={photoUrl}
+              onChange={(e) => setPhotoUrl(e.target.value)}
+              placeholder="Enter your photoUrl"
               className="input input-bordered w-full max-w-lg"
               required
             />

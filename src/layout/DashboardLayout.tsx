@@ -17,6 +17,7 @@ import { useGetAllBookingsQuery } from "../redux/api"; // API call for fetching 
 
 const AdminDashboard: React.FC = () => {
   const user = useAppSelector((state: RootState) => state.user.currentUser);
+  console.log({ user });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -45,9 +46,16 @@ const AdminDashboard: React.FC = () => {
           </div>
 
           <div className="flex justify-end items-center gap-2">
+            <div>
+              <img
+                src={user?.photoUrl}
+                className="w-9 h-9 rounded-full"
+                alt="User Photo"
+              />
+            </div>
             <div className="flex justify-end text-right flex-col gap-1 text-xs">
-              <span className="font-semibold">{user?.name}</span>
-              <span>{user?.email}</span>
+              <span className="font-bold text-sm">{user?.name}</span>
+              <span className="text-xs">{user?.email}</span>
             </div>
           </div>
         </div>

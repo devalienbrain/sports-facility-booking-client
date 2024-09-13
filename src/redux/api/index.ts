@@ -1,6 +1,7 @@
 // src/redux/api.ts
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
+import { TUser } from "@/types/user.type";
 
 // Define the base API service
 export const api = createApi({
@@ -20,7 +21,7 @@ export const api = createApi({
   endpoints: (builder) => ({
     // User Authentication
     loginUser: builder.mutation<
-      { accessToken: string; user: any },
+      { accessToken: string; user: TUser },
       { email: string; password: string }
     >({
       query: (credentials) => ({
@@ -29,7 +30,7 @@ export const api = createApi({
         body: credentials,
       }),
     }),
-    registerUser: builder.mutation<{ accessToken: string; user: any }, any>({
+    registerUser: builder.mutation<{ accessToken: string; user: TUser }, any>({
       query: (userData) => ({
         url: "/api/auth/signup",
         method: "POST",
