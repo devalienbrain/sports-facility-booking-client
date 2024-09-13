@@ -3,6 +3,7 @@ import Layout from "@/layout/Layout";
 import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
 import AddFacility from "@/pages/DashboardPages/AddFacility";
+import AdminRegister from "@/pages/DashboardPages/AdminRegister";
 import BookingPage from "@/pages/DashboardPages/BookingPage";
 import DashbordHomeUser from "@/pages/DashboardPages/DashbordHomeUser";
 import ManageBookings from "@/pages/DashboardPages/ManageBooking";
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
       {
         path: "users",
         element: <ManageUsers />,
+      },
+      {
+        path: "register",
+        element: <AdminRegister />,
       },
     ],
   },

@@ -86,7 +86,7 @@ const AdminDashboard: React.FC = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/register">
+                  <NavLink to="/dashboard/register">
                     <FaUsers /> Create An Admin
                   </NavLink>
                 </li>
