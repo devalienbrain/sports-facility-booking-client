@@ -45,11 +45,14 @@ const FAQSection: React.FC = () => {
     <section className="py-12">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-5xl font-black text-center mb-8">
-          Frequently Asked Questions
+          Frequently Asked <span className="text-blue-800">Questions</span>
         </h2>
         <div className="space-y-4">
           {faqs.map((faq) => (
-            <div key={faq.id} className="border border-slate-800 rounded-2xl shadow-md p-4">
+            <div
+              key={faq.id}
+              className="border border-slate-800 rounded-2xl shadow-md p-4"
+            >
               <button
                 className="w-full text-left flex justify-between items-center"
                 onClick={() => toggleFAQ(faq.id)}

@@ -15,7 +15,10 @@ const Banner = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 text-white">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold md:font-black mb-4">
-                Welcome to the Best Sports Facility
+                Welcome to the Best{" "}
+                <span className="text-blue-800 font-black">
+                  Sports Facility
+                </span>
               </h2>
               <p className="mb-6 text-lg">
                 Book your favorite sports facility easily and quickly.
@@ -46,7 +49,8 @@ const Banner = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 text-white">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold md:font-black mb-4">
-                Experience World-Class Facilities
+                Experience World-Class{" "}
+                <span className="text-blue-800 font-black"> Facilities </span>
               </h2>
               <p className="mb-6 text-lg">
                 Get access to top-notch sports equipment and amenities.
@@ -76,7 +80,8 @@ const Banner = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 text-white">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold md:font-black mb-4">
-                Easy Online Booking
+                Easy Online{" "}
+                <span className="text-blue-800 font-black">Booking </span>
               </h2>
               <p className="mb-6 text-lg">
                 Choose your time and facility from the comfort of your home.
@@ -106,7 +111,8 @@ const Banner = () => {
           <div className="absolute inset-0 bg-black bg-opacity-50 z-10 text-white">
             <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
               <h2 className="text-4xl md:text-5xl font-bold md:font-black mb-4">
-                Play, Compete, and Have Fun!
+                Play, Compete, and{" "}
+                <span className="text-blue-800 font-black"> Have Fun! </span>
               </h2>
               <p className="mb-6 text-lg">
                 Reserve your spot and enjoy a great time with friends.

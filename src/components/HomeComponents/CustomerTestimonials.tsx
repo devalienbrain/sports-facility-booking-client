@@ -41,7 +41,7 @@ const CustomerTestimonials: React.FC = () => {
     <div className="py-12 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-5xl font-black text-center mb-8 ">
-          Customer Testimonials
+          Customer <span className="text-blue-800"> Testimonials</span>
         </h2>
         <div className="relative p-8 rounded-2xl border border-slate-700">
           <div className="flex flex-col items-center">

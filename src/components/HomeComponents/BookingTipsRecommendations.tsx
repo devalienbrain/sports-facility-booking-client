@@ -45,16 +45,17 @@ const BookingTipsRecommendations: React.FC = () => {
     <section className="py-12 ">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <h2 className="text-5xl font-black text-center mb-8">
-          Booking Tips & Recommendations
+          Booking <span className="text-blue-900">Tips & Recommendations</span>
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {bookingTips
             .slice(0, showAllTips ? bookingTips.length : 3)
             .map((tip) => (
-              <div key={tip.id} className="bg-black/10 rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-bold mb-2">
-                  {tip.title}
-                </h3>
+              <div
+                key={tip.id}
+                className="bg-black/10 rounded-lg shadow-md p-6"
+              >
+                <h3 className="text-lg font-bold mb-2">{tip.title}</h3>
                 <p className="text-sm text-slate-100">{tip.content}</p>
               </div>
             ))}

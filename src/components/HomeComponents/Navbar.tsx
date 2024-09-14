@@ -62,7 +62,9 @@ const Navbar = () => {
           <Link to="/">
             <div className="flex items-center gap-2">
               <img src={logo} alt="Logo" className="w-7" />
-              <p className="font-black text-2xl">Sportly</p>
+              <p className="font-black text-2xl bg-gradient-to-r from-blue-700 via-blue-500 to-white bg-clip-text text-transparent">
+                Sportly
+              </p>
             </div>
           </Link>
         </div>

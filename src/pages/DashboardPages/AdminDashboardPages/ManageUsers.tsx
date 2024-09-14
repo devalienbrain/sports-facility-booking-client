@@ -52,6 +52,7 @@ const ManageUsers: React.FC = () => {
         <thead>
           <tr className="bg-gray-200 text-left text-sm uppercase font-semibold text-gray-600">
             <th className="py-3 px-6">S.No</th>
+            <th className="py-3 px-6">Profile</th>
             <th className="py-3 px-6">Name</th>
             <th className="py-3 px-6">Email</th>
             <th className="py-3 px-6">Role</th>
@@ -63,9 +64,18 @@ const ManageUsers: React.FC = () => {
             users?.data.map((user, index) => (
               <tr key={user._id} className="hover:bg-gray-100 transition-all">
                 <td className="py-3 px-6 border-b">{index + 1}</td>
+                <td className="py-3 px-6 border-b text-sm">
+                  {" "}
+                  <img
+                    src={user.photoUrl}
+                    alt="PhotoUrl"
+                    className="w-7 rounded-full"
+                  />{" "}
+                </td>
                 <td className="py-3 px-6 border-b font-semibold">
                   {user.name}
                 </td>
+
                 <td className="py-3 px-6 border-b text-sm">{user.email}</td>
                 <td className="py-3 px-6 border-b capitalize font-bold text-sm">
                   {user.role}

@@ -47,7 +47,7 @@ const AdminRegister = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen py-20 bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen">
       <div className="w-full max-w-lg">
         <form
           onSubmit={handleRegister}

@@ -40,7 +40,7 @@ const DashboardLayout: React.FC = () => {
         <div className="flex items-center gap-2">
           <img
             src={user?.photoUrl}
-            className="w-9 h-9 rounded-full"
+            className="w-8 rounded-full"
             alt="User Photo"
           />
           <div className="flex flex-col text-xs">

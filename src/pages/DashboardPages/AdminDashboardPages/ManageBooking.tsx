@@ -1,8 +1,8 @@
 import { useDeleteBookingMutation, useGetAllBookingsQuery } from "@/redux/api";
-import { TBooking } from "../../types/booking.type";
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import { TBooking } from "@/types/booking.type";
 
 const ManageBookings: React.FC = () => {
   const {

@@ -8,7 +8,7 @@ const FeaturedItems: React.FC = () => {
   return (
     <div className="text-center">
       <h1 className="text-5xl font-black text-center mb-8">
-        Featured Facilities
+        <span className="text-blue-800"> Featured </span> Facilities
       </h1>
 
       {isLoading ? (
