@@ -1,7 +1,8 @@
-// src/redux/api.ts
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { TUser } from "@/types/user.type";
+import { TFacility } from "@/types/facility.type";
+import { TBooking } from "@/types/booking.type";
 
 // Define the base API service
 export const api = createApi({
@@ -10,19 +11,23 @@ export const api = createApi({
     baseUrl: "http://localhost:5000",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token;
-      console.log(token);
       if (token) {
         headers.set("Authorization", `Bearer ${token}`);
       }
-      console.log(headers);
       return headers;
     },
   }),
   endpoints: (builder) => ({
     // User Authentication
     loginUser: builder.mutation<
-      { accessToken: string; user: TUser },
-      { email: string; password: string }
+      {
+        accessToken: string;
+        user: TUser;
+      },
+      {
+        email: string;
+        password: string;
+      }
     >({
       query: (credentials) => ({
         url: "/api/auth/login",
@@ -30,7 +35,13 @@ export const api = createApi({
         body: credentials,
       }),
     }),
-    registerUser: builder.mutation<{ accessToken: string; user: TUser }, any>({
+    registerUser: builder.mutation<
+      {
+        accessToken: string;
+        user: TUser;
+      },
+      any
+    >({
       query: (userData) => ({
         url: "/api/auth/signup",
         method: "POST",
@@ -52,7 +63,13 @@ export const api = createApi({
         body: facilityData,
       }),
     }),
-    updateFacility: builder.mutation<any, { id: string; facilityData: any }>({
+    updateFacility: builder.mutation<
+      any,
+      {
+        id: string;
+        facilityData: TFacility;
+      }
+    >({
       query: ({ id, facilityData }) => ({
         url: `/api/facility/${id}`,
         method: "PUT",
@@ -76,7 +93,13 @@ export const api = createApi({
         method: "DELETE",
       }),
     }),
-    updateUser: builder.mutation<any, { id: string; userData: any }>({
+    updateUser: builder.mutation<
+      any,
+      {
+        id: string;
+        userData: TUser;
+      }
+    >({
       query: ({ id, userData }) => ({
         url: `/api/users/${id}`,
         method: "PUT",
@@ -96,8 +119,9 @@ export const api = createApi({
       query: () => "/api/bookings",
     }),
     getUserBookings: builder.query<any[], string>({
-      query: (userId) => `/api/bookings/user/${userId}`,
+      query: (userId) => `/api/bookings/user/${userId}`, // Pass userId to the API
     }),
+
     createBooking: builder.mutation<any, any>({
       query: (bookingData) => ({
         url: "/api/bookings",
@@ -105,7 +129,13 @@ export const api = createApi({
         body: bookingData,
       }),
     }),
-    updateBooking: builder.mutation<any, { id: string; bookingData: any }>({
+    updateBooking: builder.mutation<
+      any,
+      {
+        id: string;
+        bookingData: TBooking;
+      }
+    >({
       query: ({ id, bookingData }) => ({
         url: `/api/bookings/${id}`,
         method: "PUT",
@@ -120,7 +150,13 @@ export const api = createApi({
     }),
 
     // Check Booking Availability
-    checkAvailability: builder.query<any, { date: string; facility: string }>({
+    checkAvailability: builder.query<
+      any,
+      {
+        date: string;
+        facility: string;
+      }
+    >({
       query: ({ date, facility }) =>
         `/api/check-availability?date=${date}&facility=${facility}`,
     }),

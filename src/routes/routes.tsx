@@ -1,27 +1,30 @@
-import Dashboard from "@/layout/DashboardLayout";
-import Layout from "@/layout/Layout";
+import { createBrowserRouter } from "react-router-dom";
+
+import HomeLayout from "@/layout/HomeLayout";
+import SportsHome from "@/pages/SportsHome";
 import AboutUs from "@/pages/AboutUs";
 import ContactUs from "@/pages/ContactUs";
-import AddFacility from "@/pages/DashboardPages/AddFacility";
-import AdminRegister from "@/pages/DashboardPages/AdminRegister";
-import BookingPage from "@/pages/DashboardPages/BookingPage";
-import DashbordHomeUser from "@/pages/DashboardPages/DashbordHomeUser";
-import ManageBookings from "@/pages/DashboardPages/ManageBooking";
-import ManageFacilities from "@/pages/DashboardPages/ManageFacilities";
-import ManageUsers from "@/pages/DashboardPages/ManageUsers";
-import UpdateFacility from "@/pages/DashboardPages/UpdateFacility";
-import ErrorPage from "@/pages/ErrorPage/ErrorPage";
 import FacilityListing from "@/pages/FacilitiesList/FacilitiesList";
 import FacilityBooking from "@/pages/FacilityBooking/FacilityBooking";
 import Login from "@/pages/LoginPage";
 import Register from "@/pages/RegisterPage";
-import SportsHome from "@/pages/SportsHome";
-import { createBrowserRouter } from "react-router-dom";
+import ErrorPage from "@/pages/ErrorPage/ErrorPage";
+
+import DashboardLayout from "@/layout/DashboardLayout";
+import DashbordUserProfile from "@/pages/DashboardPages/DashbordUserProfile";
+import ManageUsers from "@/pages/DashboardPages/AdminDashboardPages/ManageUsers";
+import ManageFacilities from "@/pages/DashboardPages/AdminDashboardPages/ManageFacilities";
+import ManageBookings from "@/pages/DashboardPages/AdminDashboardPages/ManageBooking";
+import AddFacility from "@/pages/DashboardPages/AdminDashboardPages/AddFacility";
+import UpdateFacility from "@/pages/DashboardPages/AdminDashboardPages/UpdateFacility";
+import AdminRegister from "@/pages/DashboardPages/AdminDashboardPages/AdminRegister";
+import BookingPage from "@/pages/DashboardPages/AdminDashboardPages/BookingPage";
+import BookingByUser from "@/pages/DashboardPages/UserDashboardPages/BookingByUser";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <HomeLayout />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -56,13 +59,13 @@ const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <Dashboard />,
+    element: <DashboardLayout />,
     children: [
       {
-        // path: "dashboard",
         index: true,
-        element: <DashbordHomeUser />,
+        element: <DashbordUserProfile />,
       },
+      // Admin dashboard pages
       {
         path: "facilities",
         element: <ManageFacilities />,
@@ -83,10 +86,7 @@ const router = createBrowserRouter([
         path: "bookings",
         element: <ManageBookings />,
       },
-      {
-        path: "bookAFacility",
-        element: <BookingPage />,
-      },
+
       {
         path: "users",
         element: <ManageUsers />,
@@ -94,6 +94,15 @@ const router = createBrowserRouter([
       {
         path: "register",
         element: <AdminRegister />,
+      },
+      // User dashboard pages
+      {
+        path: "bookAFacility",
+        element: <BookingPage />,
+      },
+      {
+        path: "userBookings",
+        element: <BookingByUser />,
       },
     ],
   },

@@ -5,7 +5,7 @@ import logo from "/resources/logo.png";
 
 const Navbar = () => {
   // Access the user from Redux store
-  const user = useSelector((state: RootState) => state.user.currentUser);
+  const user = useSelector((state: RootState) => state.user.user);
   // console.log(user);
   return (
     <>

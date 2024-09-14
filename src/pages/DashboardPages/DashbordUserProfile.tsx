@@ -1,13 +1,13 @@
 // src/components/DashbordHomeUser.tsx
 import { useAppSelector } from "../../redux/hook";
 import React from "react";
-import profilePictureUrl from "../../../public/resources/alienDev.jpg";
+import profilePictureUrl from "/resources/alienDev.jpg";
 
-const DashbordHomeUser: React.FC = () => {
-  const user = useAppSelector((state) => state.user.currentUser);
+const DashbordUserProfile: React.FC = () => {
+  const user = useAppSelector((state) => state.user.user);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="w-full max-w-md bg-white rounded-xl shadow-lg p-8 text-center transition duration-300 hover:shadow-2xl">
         {/* Profile Picture */}
         <img
@@ -50,4 +50,4 @@ const DashbordHomeUser: React.FC = () => {
   );
 };
 
-export default DashbordHomeUser;
+export default DashbordUserProfile;

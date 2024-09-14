@@ -1,6 +1,8 @@
-import { useCheckAvailabilityQuery, useCreateBookingMutation } from "../../redux/api";
+import {
+  useCheckAvailabilityQuery,
+  useCreateBookingMutation,
+} from "@/redux/api";
 import React, { useState } from "react";
-
 
 const BookingPage: React.FC = () => {
   const [selectedDate, setSelectedDate] = useState("");

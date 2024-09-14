@@ -1,12 +1,11 @@
-import Banner from "@/components/Banner";
-import BookingTipsRecommendations from "@/components/BookingTipsRecommendations";
-import CustomerTestimonials from "@/components/CustomerTestimonials";
-import FAQSection from "@/components/FAQSection";
-import FeaturedItems from "@/components/FeaturedItems/FeaturedItems";
-import Footer from "@/components/Footer";
-import HowItWorks from "@/components/HowItWorks";
-
-import ScrollToTopButton from "@/components/ScrollToTop";
+import Banner from "@/components/HomeComponents/Banner";
+import BookingTipsRecommendations from "@/components/HomeComponents/BookingTipsRecommendations";
+import CustomerTestimonials from "@/components/HomeComponents/CustomerTestimonials";
+import FAQSection from "@/components/HomeComponents/FAQSection";
+import FeaturedItems from "@/components/HomeComponents/FeaturedItems";
+import Footer from "@/components/HomeComponents/Footer";
+import HowItWorks from "@/components/HomeComponents/HowItWorks";
+import ScrollToTopButton from "@/components/HomeComponents/ScrollToTop";
 
 const SportsHome = () => {
   return (

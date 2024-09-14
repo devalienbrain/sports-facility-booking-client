@@ -2,7 +2,7 @@ import React from "react";
 import { RootState } from "../redux/store";
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hook";
-import { logout } from "../redux/features/userSlice";
+import { logout } from "../redux/features/authSlice";
 import logo from "/resources/logo.png";
 import {
   FaAd,
@@ -13,14 +13,11 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
-import { useGetAllBookingsQuery } from "../redux/api"; // API call for fetching all bookings
 
-const AdminDashboard: React.FC = () => {
-  const user = useAppSelector((state: RootState) => state.user.currentUser);
+const DashboardLayout: React.FC = () => {
+  const user = useAppSelector((state: RootState) => state.user.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  const { data: bookings = [], isLoading } = useGetAllBookingsQuery(); // Fetch all bookings
 
   if (!user) return <p>Loading...</p>;
 
@@ -33,7 +30,7 @@ const AdminDashboard: React.FC = () => {
   return (
     <div className="bg-white text-black h-screen flex flex-col">
       {/* Navbar */}
-      <div className="flex justify-between items-center shadow-lg px-6 py-4">
+      <div className="flex justify-between items-center shadow-xl px-6 py-3 bg-slate-100">
         <NavLink to="/">
           <div className="flex items-center gap-2">
             <img src={logo} alt="Logo" className="w-7" />
@@ -56,7 +53,7 @@ const AdminDashboard: React.FC = () => {
       {/* Sidebar and Content */}
       <div className="flex flex-col md:flex-row flex-1 overflow-scroll md:overflow-hidden">
         {/* Sidebar for larger devices */}
-        <div className="hidden md:flex md:flex-col bg-slate-100 text-slate-950 p-6 w-64 text-xl font-semibold gap-3">
+        <div className="hidden md:flex md:flex-col bg-slate-100 text-slate-950 p-6 w-64 text-xl font-semibold gap-3 shadow-xl">
           <ul className="menu p-4">
             <li>
               <NavLink to="/dashboard">
@@ -94,7 +91,7 @@ const AdminDashboard: React.FC = () => {
             ) : (
               <>
                 <li>
-                  <NavLink to="/dashboard/bookings">
+                  <NavLink to="/dashboard/userBookings">
                     <FaShoppingCart /> My Bookings
                   </NavLink>
                 </li>
@@ -164,4 +161,4 @@ const AdminDashboard: React.FC = () => {
   );
 };
 
-export default AdminDashboard;
+export default DashboardLayout;

@@ -1,8 +1,10 @@
 // src/redux/store.ts
 import { configureStore } from "@reduxjs/toolkit";
 import { api } from "./api";
-import userReducer from "./features/userSlice";
+import authReducer from "./features/authSlice";
 import facilityReducer from "./features/facilitySlice";
+import bookingReducer from "./features/bookingSlice";
+
 import {
   persistReducer,
   persistStore,
@@ -21,13 +23,15 @@ const userPersistConfig = {
   storage,
 };
 
-const persistedUserReducer = persistReducer(userPersistConfig, userReducer);
+const persistedUserReducer = persistReducer(userPersistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
     [api.reducerPath]: api.reducer,
-    user: persistedUserReducer, 
+    user: persistedUserReducer,
+    auth: authReducer,
     facility: facilityReducer,
+    bookings: bookingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
@@ -41,4 +45,3 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);
-

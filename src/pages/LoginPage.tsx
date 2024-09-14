@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../redux/api";
 import { useAppDispatch } from "../redux/hook";
-import { setUser } from "../redux/features/userSlice";
+import { setUser } from "../redux/features/authSlice";
 import logo from "/resources/logo.png";
 
 const Login = () => {

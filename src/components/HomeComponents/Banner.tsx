@@ -1,7 +1,7 @@
-import banner1 from "../../public/resources/banner1.jpg";
-import banner2 from "../../public/resources/banner2.jpg";
-import banner3 from "../../public/resources/banner3.jpg";
-import banner4 from "../../public/resources/banner4.jpg";
+import banner1 from "/resources/banner1.jpg";
+import banner2 from "/resources/banner2.jpg";
+import banner3 from "/resources/banner3.jpg";
+import banner4 from "/resources/banner4.jpg";
 import Navbar from "./Navbar";
 
 const Banner = () => {

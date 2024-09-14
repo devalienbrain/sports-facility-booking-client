@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { api } from "../api";
 import { TBooking } from "@/types/booking.type";
-// import { api } from "./api";
 
 // Define the initial state for the bookings
 export interface BookingState {
