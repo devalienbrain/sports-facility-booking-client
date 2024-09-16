@@ -34,3 +34,12 @@ export default {
 
 
 SERVER CODE LINK: https://github.com/devalienbrain/sports-facility-booking-server
+
+
+#Admin
+admin@sportly-home.com
+admin123
+
+#user
+user@sportly-home.com
+user123

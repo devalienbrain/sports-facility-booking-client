@@ -32,13 +32,13 @@ const AddFacility: React.FC = () => {
   return (
     <div className="p-4 max-w-md mx-auto">
       <h1 className="text-2xl font-bold mb-4">Add Facility</h1>
-      <form onSubmit={handleSubmit} className="space-y-4 text-red-600">
+      <form onSubmit={handleSubmit} className="space-y-4 text-black">
         {/* Name */}
         <div>
           <label className="block text-sm font-medium">Name</label>
           <input
             type="text"
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
+            className="mt-1 p-2 border border-gray-300 rounded w-full text-white"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -50,7 +50,7 @@ const AddFacility: React.FC = () => {
           <label className="block text-sm font-medium">Location</label>
           <input
             type="text"
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
+            className="mt-1 p-2 border border-gray-300 rounded w-full text-white"
             value={location}
             onChange={(e) => setLocation(e.target.value)}
             required
@@ -62,7 +62,7 @@ const AddFacility: React.FC = () => {
           <label className="block text-sm font-medium">Price Per Hour</label>
           <input
             type="number"
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
+            className="mt-1 p-2 border border-gray-300 rounded w-full text-white"
             value={pricePerHour}
             onChange={(e) => setPricePerHour(Number(e.target.value))}
             required
@@ -73,7 +73,7 @@ const AddFacility: React.FC = () => {
         <div>
           <label className="block text-sm font-medium">Description</label>
           <textarea
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
+            className="mt-1 p-2 border border-gray-300 rounded w-full text-white"
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
@@ -85,7 +85,7 @@ const AddFacility: React.FC = () => {
           <label className="block text-sm font-medium">Image URL</label>
           <input
             type="text"
-            className="mt-1 p-2 border border-gray-300 rounded w-full"
+            className="mt-1 p-2 border border-gray-300 rounded w-full text-white"
             value={imageUrl}
             onChange={(e) => setImageUrl(e.target.value)} // Add input for imageUrl
             required
@@ -94,7 +94,7 @@ const AddFacility: React.FC = () => {
 
         <button
           type="submit"
-          className="bg-green-500 text-white px-4 py-2 rounded"
+          className="bg-blue-600 text-white px-4 py-2 rounded"
           disabled={isLoading}
         >
           {isLoading ? "Adding..." : "Add Facility"}

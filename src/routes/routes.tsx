@@ -18,7 +18,7 @@ import ManageBookings from "@/pages/DashboardPages/AdminDashboardPages/ManageBoo
 import AddFacility from "@/pages/DashboardPages/AdminDashboardPages/AddFacility";
 import UpdateFacility from "@/pages/DashboardPages/AdminDashboardPages/UpdateFacility";
 import AdminRegister from "@/pages/DashboardPages/AdminDashboardPages/AdminRegister";
-import BookingPage from "@/pages/DashboardPages/AdminDashboardPages/BookingPage";
+import BookingPage from "@/pages/DashboardPages/UserDashboardPages/BookingPage";
 import BookingByUser from "@/pages/DashboardPages/UserDashboardPages/BookingByUser";
 
 const router = createBrowserRouter([

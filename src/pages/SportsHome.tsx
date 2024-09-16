@@ -33,7 +33,7 @@ const SportsHome = () => {
           <FAQSection />
         </div>
       </div>
-      <div className="bg-slate-950 text-white">
+      <div className="bg-slate-950 text-white shadow-lg">
         <div className="max-w-7xl mx-auto">
           <Footer />
         </div>

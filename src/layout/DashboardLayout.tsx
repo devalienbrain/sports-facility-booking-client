@@ -30,7 +30,7 @@ const DashboardLayout: React.FC = () => {
   return (
     <div className="bg-white text-black h-screen flex flex-col">
       {/* Navbar */}
-      <div className="flex justify-between items-center shadow-xl px-6 py-3 bg-slate-100">
+      <div className="flex justify-between items-center shadow-xl px-6 py-3 bg-slate-50">
         <NavLink to="/">
           <div className="flex items-center gap-2">
             <img src={logo} alt="Logo" className="w-7" />
@@ -53,7 +53,7 @@ const DashboardLayout: React.FC = () => {
       {/* Sidebar and Content */}
       <div className="flex flex-col md:flex-row flex-1 overflow-scroll md:overflow-hidden">
         {/* Sidebar for larger devices */}
-        <div className="hidden md:flex md:flex-col bg-slate-100 text-slate-950 p-6 w-64 text-xl font-semibold gap-3 shadow-xl">
+        <div className="hidden md:flex md:flex-col bg-slate-50 text-slate-950 p-6 w-64 text-xl font-semibold gap-3 shadow-xl">
           <ul className="menu p-4">
             <li>
               <NavLink to="/dashboard">

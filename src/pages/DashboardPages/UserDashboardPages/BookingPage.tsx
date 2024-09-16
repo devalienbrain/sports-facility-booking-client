@@ -39,7 +39,7 @@ const BookingPage: React.FC = () => {
           type="date"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
-          className="border border-gray-300 p-2 rounded w-full"
+          className="border border-gray-300 p-2 rounded w-full text-white"
         />
       </div>
       <button

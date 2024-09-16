@@ -73,7 +73,7 @@ const AdminRegister = () => {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
-              className="input input-bordered w-full max-w-lg"
+              className="input input-bordered w-full max-w-lg text-white"
               required
             />
           </div>
@@ -90,7 +90,7 @@ const AdminRegister = () => {
               value={photoUrl}
               onChange={(e) => setPhotoUrl(e.target.value)}
               placeholder="Enter your photo URL"
-              className="input input-bordered w-full max-w-lg"
+              className="input input-bordered w-full max-w-lg text-white"
               required
             />
           </div>
@@ -107,7 +107,7 @@ const AdminRegister = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
-              className="input input-bordered w-full max-w-lg"
+              className="input input-bordered w-full max-w-lg text-white"
               required
             />
           </div>
@@ -124,7 +124,7 @@ const AdminRegister = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
-              className="input input-bordered w-full max-w-lg"
+              className="input input-bordered w-full max-w-lg text-white"
               required
             />
           </div>
@@ -141,7 +141,7 @@ const AdminRegister = () => {
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               placeholder="Enter your phone number"
-              className="input input-bordered w-full max-w-lg"
+              className="input input-bordered w-full max-w-lg text-white"
               required
             />
           </div>
@@ -158,12 +158,12 @@ const AdminRegister = () => {
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="Enter your address"
-              className="input input-bordered w-full max-w-lg"
+              className="input input-bordered w-full max-w-lg text-white"
               required
             />
           </div>
           <div className="flex items-center justify-between">
-            <button type="submit" className="btn btn-primary w-full">
+            <button type="submit" className="btn bg-blue-500 w-full">
               Register Admin
             </button>
           </div>
