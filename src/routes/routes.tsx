@@ -20,6 +20,7 @@ import UpdateFacility from "@/pages/DashboardPages/AdminDashboardPages/UpdateFac
 import AdminRegister from "@/pages/DashboardPages/AdminDashboardPages/AdminRegister";
 import BookingPage from "@/pages/DashboardPages/UserDashboardPages/BookingPage";
 import BookingByUser from "@/pages/DashboardPages/UserDashboardPages/BookingByUser";
+import FacilityDetails from "@/pages/FacilityDetails/FacilityDetails";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,11 @@ const router = createBrowserRouter([
         element: <FacilityListing />,
       },
       {
-        path: "/facility-booking",
+        path: "/api/facility/:id",
+        element: <FacilityDetails />,
+      },
+      {
+        path: "/facility-booking/:id",
         element: <FacilityBooking />,
       },
     ],

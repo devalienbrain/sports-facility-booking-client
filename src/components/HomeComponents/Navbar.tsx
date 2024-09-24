@@ -45,11 +45,6 @@ const Navbar = () => {
                       <p>Facilities list</p>
                     </Link>
                   </li>
-                  <li>
-                    <Link to="/facility-booking">
-                      <p>Facility booking</p>
-                    </Link>
-                  </li>
                 </ul>
               </li>
               <li>
@@ -82,11 +77,6 @@ const Navbar = () => {
                   <li>
                     <Link to="/facilities-list">
                       <p>Facilities list</p>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/facility-booking">
-                      <p>Facility booking</p>
                     </Link>
                   </li>
                 </ul>

@@ -13,7 +13,7 @@ const BookingPage: React.FC = () => {
     { date: selectedDate, facility: "" }, // Replace with actual facility ID if needed
     { skip: !selectedDate } // Skip the query if no date is selected
   );
-
+  console.log({ availableSlots });
   // Mutation hook for creating a booking
   const [createBooking] = useCreateBookingMutation();
 
