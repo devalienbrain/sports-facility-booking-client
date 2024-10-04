@@ -101,11 +101,6 @@ const DashboardLayout: React.FC = () => {
                     <FaPaypal /> Payment
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/dashboard/bookAFacility">
-                    <FaShoppingCart /> Book A Facility
-                  </NavLink>
-                </li>
               </>
             )}
             <li>

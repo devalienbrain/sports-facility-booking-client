@@ -166,11 +166,11 @@ export const api = createApi({
       any,
       {
         date: string;
-        facility: string;
+        facilityId: string;
       }
     >({
-      query: ({ date, facility }) =>
-        `/api/check-availability?date=${date}&facility=${facility}`,
+      query: ({ date, facilityId }) =>
+        `/api/check-availability?date=${date}&facility=${facilityId}`,
     }),
   }),
 });

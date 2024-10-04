@@ -18,7 +18,6 @@ import ManageBookings from "@/pages/DashboardPages/AdminDashboardPages/ManageBoo
 import AddFacility from "@/pages/DashboardPages/AdminDashboardPages/AddFacility";
 import UpdateFacility from "@/pages/DashboardPages/AdminDashboardPages/UpdateFacility";
 import AdminRegister from "@/pages/DashboardPages/AdminDashboardPages/AdminRegister";
-import BookingPage from "@/pages/DashboardPages/UserDashboardPages/BookingPage";
 import BookingByUser from "@/pages/DashboardPages/UserDashboardPages/BookingByUser";
 import CheckoutForPayment from "@/pages/DashboardPages/UserDashboardPages/CheckoutForPayment";
 import FacilityDetails from "@/pages/FacilityDetails/FacilityDetails";
@@ -102,10 +101,6 @@ const router = createBrowserRouter([
         element: <AdminRegister />,
       },
       // User dashboard pages
-      {
-        path: "bookAFacility",
-        element: <BookingPage />,
-      },
       {
         path: "userBookings",
         element: <BookingByUser />,
