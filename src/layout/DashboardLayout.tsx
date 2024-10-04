@@ -8,6 +8,7 @@ import {
   FaAd,
   FaHome,
   FaList,
+  FaPaypal,
   FaShoppingCart,
   FaUser,
   FaUsers,
@@ -93,6 +94,11 @@ const DashboardLayout: React.FC = () => {
                 <li>
                   <NavLink to="/dashboard/userBookings">
                     <FaShoppingCart /> My Bookings
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/checkoutForPayment">
+                    <FaPaypal /> Payment
                   </NavLink>
                 </li>
                 <li>

@@ -8,8 +8,8 @@ import { TBooking } from "@/types/booking.type";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    // baseUrl: "http://localhost:5000",
-    baseUrl: "https://sports-facility-booking-server-vert.vercel.app/",
+    baseUrl: "http://localhost:5000",
+    // baseUrl: "https://sports-facility-booking-server-vert.vercel.app/",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token;
       if (token) {
@@ -152,7 +152,13 @@ export const api = createApi({
 
     // Payment
     creteOrder: builder.mutation({
-      query: () => {},
+      query: (data) => {
+        return {
+          method: "POST",
+          url: `/api/order/create`,
+          body: data,
+        };
+      },
     }),
 
     // Check Booking Availability

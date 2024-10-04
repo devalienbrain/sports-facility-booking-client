@@ -48,15 +48,17 @@ const CheckoutForPayment = () => {
     e.preventDefault();
     const data = {
       user,
-      products: bookings?.map((item) => ({
+      products: bookings?.data.map((item) => ({
         product: item?._id,
-        quantity: item?.quantity,
+        quantity: item?.payableAmount,
       })),
     };
     try {
       const res = await createOrder(data).unwrap();
+      console.log(res);
       if (res.success) {
-        window.location.href = res.data.payment_url;
+        // window.location.href = res.data.payment_url;
+        console.log("Order creation Successful");
       } else {
         console.error("Order creation failed:", res.message);
       }
@@ -67,7 +69,7 @@ const CheckoutForPayment = () => {
 
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-bold mb-6">Checkout</h2>
+      <h2 className="text-3xl font-extrabold mb-6 text-red-600">Checkout</h2>
       <form onSubmit={handleSubmit}>
         <div className="mb-8 border p-5 rounded">
           <h3 className="text-xl font-semibold mb-4">User Information</h3>
@@ -82,7 +84,7 @@ const CheckoutForPayment = () => {
                 value={user.name}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 text-white font-semibold"
               />
             </div>
             <div>
@@ -95,7 +97,7 @@ const CheckoutForPayment = () => {
                 value={user.email}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 text-white font-semibold"
               />
             </div>
             <div>
@@ -108,7 +110,7 @@ const CheckoutForPayment = () => {
                 value={user.phone}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 text-white font-semibold"
               />
             </div>
             <div>
@@ -121,19 +123,19 @@ const CheckoutForPayment = () => {
                 value={user.address}
                 onChange={handleChange}
                 required
-                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500"
+                className="mt-1 block w-full p-2 border border-gray-300 rounded-lg shadow-sm focus:ring-green-500 focus:border-green-500 text-white font-semibold"
               />
             </div>
           </div>
         </div>
 
         <div className="mb-8">
-          <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
+          <h3 className="text-xl font-semibold mb-4">Booking Summary</h3>
           <table className="min-w-full bg-white border border-gray-300">
             <thead>
               <tr className="bg-gray-200">
                 <th className="text-left py-3 px-4 font-semibold text-sm">
-                  Product
+                  Facility
                 </th>
                 <th className="text-left py-3 px-4 font-semibold text-sm">
                   Price
@@ -142,7 +144,7 @@ const CheckoutForPayment = () => {
             </thead>
             <tbody>
               {bookings?.data?.map((item) => (
-                <tr key={item._id} className="border-b">
+                <tr key={item._id} className="border-b font-semibold">
                   <td className="py-3 px-4">{item.facility.name}</td>
                   <td className="py-3 px-4">${item.payableAmount}</td>
                 </tr>
@@ -154,12 +156,21 @@ const CheckoutForPayment = () => {
         {/* Display total payable amount */}
         <div className="mb-8 text-right">
           <div className="flex justify-end items-center gap-5">
-            <p className="text-lg font-bold text-red-600">
+            <p
+              className={`text-lg font-bold ${
+                totalPayableAmount <= 0 ? "text-red-600" : "text-gray-700"
+              }`}
+            >
               Total Amount: ${totalPayableAmount}
             </p>
             <button
               type="submit"
-              className="bg-slate-800 text-white font-semibold py-2 px-6 rounded-3xl hover:bg-green-700 transition duration-300"
+              className={`${
+                totalPayableAmount <= 0
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-green-900 hover:bg-green-700"
+              } text-white font-semibold py-2 px-6 rounded-3xl transition duration-300`}
+              disabled={totalPayableAmount <= 0}
             >
               Proceed to Payment
             </button>
