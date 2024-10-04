@@ -17,6 +17,12 @@ const BookingByUser: React.FC = () => {
     }
   };
 
+  // Calculate total payable amount
+  const totalPayableAmount =
+    bookings?.data?.reduce((total: number, booking: TBooking) => {
+      return total + booking.payableAmount;
+    }, 0) || 0;
+
   if (isLoading)
     return <div className="text-center text-gray-600">Loading bookings...</div>;
   if (error)
@@ -27,6 +33,17 @@ const BookingByUser: React.FC = () => {
   return (
     <div className="container mx-auto mt-8 p-4 bg-white shadow-lg rounded-lg">
       <h2 className="text-2xl font-bold mb-6 text-gray-800">Your Bookings</h2>
+
+      {/* Display Total Payable Amount */}
+      <div className="mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
+        <p className="text-xl font-semibold text-gray-700">
+          Total Payable Amount:{" "}
+          <span className="font-bold text-green-600">
+            ${totalPayableAmount}
+          </span>
+        </p>
+      </div>
+
       {bookings && bookings?.data?.length > 0 ? (
         <ul className="space-y-4">
           {bookings.data.map((booking: TBooking, index: number) => (
@@ -55,6 +72,10 @@ const BookingByUser: React.FC = () => {
                     {new Date(booking.endTime).toLocaleTimeString()}
                   </span>
                 </p>
+                <p className="text-gray-600 mt-1">
+                  Payable Amount:{" "}
+                  <span className="font-medium">${booking.payableAmount}</span>
+                </p>
               </div>
               <button
                 className="ml-4 px-4 py-2 text-white bg-red-500 hover:bg-red-600 rounded-lg"
@@ -67,6 +88,15 @@ const BookingByUser: React.FC = () => {
         </ul>
       ) : (
         <p className="text-center text-gray-600">You have no bookings.</p>
+      )}
+
+      {/* Proceed to Payment Button */}
+      {totalPayableAmount > 0 && (
+        <div className="mt-6 text-center">
+          <button className="px-6 py-3 text-white bg-blue-500 hover:bg-blue-600 rounded-lg">
+            Proceed to Payment
+          </button>
+        </div>
       )}
     </div>
   );
