@@ -54,7 +54,7 @@ const CheckoutForPayment = () => {
       const res = await createOrder(data).unwrap();
       console.log(res);
       if (res.success) {
-        // window.location.href = res.data.payment_url;
+        window.location.href = res?.data?.payment_url;
         // console.log("Order creation Successful");
       } else {
         console.error("Order creation failed:", res.message);
