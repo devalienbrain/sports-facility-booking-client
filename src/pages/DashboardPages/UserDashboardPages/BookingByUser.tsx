@@ -2,6 +2,7 @@ import React from "react";
 import { useDeleteBookingMutation, useGetUserBookingsQuery } from "@/redux/api";
 import { TBooking } from "@/types/booking.type";
 import { useAppSelector } from "@/redux/hook";
+import { Link } from "react-router-dom";
 
 const BookingByUser: React.FC = () => {
   const { _id: userId } = useAppSelector((state) => state.user.user);
@@ -57,24 +58,26 @@ const BookingByUser: React.FC = () => {
                 </p>
                 <p className="text-gray-600 mt-1">
                   Facility:{" "}
-                  <span className="font-medium">{booking.facility.name}</span>
+                  <span className="font-extrabold">
+                    {booking.facility.name}
+                  </span>
                 </p>
                 <p className="text-gray-600 mt-1">
                   Date:{" "}
-                  <span className="font-medium">
+                  <span className="font-semibold">
                     {new Date(booking.date).toLocaleDateString()}
                   </span>
                 </p>
                 <p className="text-gray-600 mt-1">
                   Time:{" "}
-                  <span className="font-medium">
+                  <span className="font-semibold">
                     {new Date(booking.startTime).toLocaleTimeString()} -{" "}
                     {new Date(booking.endTime).toLocaleTimeString()}
                   </span>
                 </p>
                 <p className="text-gray-600 mt-1">
                   Payable Amount:{" "}
-                  <span className="font-medium">${booking.payableAmount}</span>
+                  <span className="font-bold">${booking.payableAmount}</span>
                 </p>
               </div>
               <button
@@ -87,16 +90,18 @@ const BookingByUser: React.FC = () => {
           ))}
         </ul>
       ) : (
-        <p className="text-center text-gray-600">You have no bookings.</p>
+        <p className="text-center text-red-600">You have no bookings.</p>
       )}
 
       {/* Proceed to Payment Button */}
       {totalPayableAmount > 0 && (
-        <div className="mt-6 text-center">
-          <button className="px-6 py-3 text-white bg-blue-500 hover:bg-blue-600 rounded-lg">
-            Proceed to Payment
-          </button>
-        </div>
+        <Link to="/dashboard/checkoutForPayment">
+          <div className="mt-6 text-center">
+            <button className="px-6 py-3 rounded-3xl shadow-xl text-white bg-blue-500 hover:bg-blue-600 font-semibold">
+              Proceed to Payment
+            </button>
+          </div>
+        </Link>
       )}
     </div>
   );

@@ -150,6 +150,11 @@ export const api = createApi({
       }),
     }),
 
+    // Payment
+    creteOrder: builder.mutation({
+      query: () => {},
+    }),
+
     // Check Booking Availability
     checkAvailability: builder.query<
       any,
@@ -182,4 +187,5 @@ export const {
   useUpdateBookingMutation,
   useDeleteBookingMutation,
   useCheckAvailabilityQuery,
+  useCreteOrderMutation,
 } = api;
