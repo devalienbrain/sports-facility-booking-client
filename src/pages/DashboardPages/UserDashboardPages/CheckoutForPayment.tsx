@@ -49,13 +49,15 @@ const CheckoutForPayment = () => {
     const data = {
       user,
       totalPayableAmount,
+      bookingIds: bookings?.data?.map((item) => ({
+        bookingId: item._id,
+      })),
     };
     try {
       const res = await createOrder(data).unwrap();
       console.log(res);
       if (res.success) {
         window.location.href = res?.data?.payment_url;
-        // console.log("Order creation Successful");
       } else {
         console.error("Order creation failed:", res.message);
       }
