@@ -5,13 +5,15 @@ import { TFacility } from "@/types/facility.type";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const FacilityListing = () => {
+const FacilityList = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [filterPrice, setFilterPrice] = useState<number | "">("");
 
-  const { data, isLoading, error } = useGetFacilitiesQuery("");
+  const { data, isLoading, error } = useGetFacilitiesQuery();
+  // const facilities: TFacility[] = Array.isArray(data) ? data : [];
   const facilities = data?.data || [];
-  const [filteredFacilities, setFilteredFacilities] = useState<TFacility[]>(facilities);
+  const [filteredFacilities, setFilteredFacilities] =
+    useState<TFacility[]>(facilities);
 
   const navigate = useNavigate();
 
@@ -47,7 +49,11 @@ const FacilityListing = () => {
             type="number"
             placeholder="Filter by price"
             value={filterPrice}
-            onChange={(e) => setFilterPrice(e.target.value === "" ? "" : Number(e.target.value))}
+            onChange={(e) =>
+              setFilterPrice(
+                e.target.value === "" ? "" : Number(e.target.value)
+              )
+            }
             className="input input-bordered w-full max-w-xs"
           />
         </div>
@@ -56,7 +62,7 @@ const FacilityListing = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredFacilities.length > 0 ? (
             filteredFacilities.map((facility: TFacility) => (
-              <div key={facility.name} className="card shadow-lg">
+              <div key={facility._id} className="card shadow-lg">
                 <figure>
                   <img
                     src={facility.imageUrl}
@@ -91,4 +97,4 @@ const FacilityListing = () => {
   );
 };
 
-export default FacilityListing;
+export default FacilityList;

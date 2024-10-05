@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import Footer from "@/components/HomeComponents/Footer";
 import Navbar from "@/components/HomeComponents/Navbar";
-import { useGetFacilityByIdQuery } from "@/redux/api"; // Assume this is the API hook for fetching facility by ID
+import { useGetFacilityByIdQuery } from "@/redux/api"; 
 import { useNavigate } from "react-router-dom";
 
 const FacilityDetails = () => {
@@ -12,8 +12,7 @@ const FacilityDetails = () => {
   if (isLoading) return <div>Loading facility details...</div>;
   if (error || !facility) return <div>Error fetching facility details.</div>;
 
-  const { name, location, pricePerHour, description, imageUrl } = facility.data; // Assume data contains the facility details
-
+  const { name, location, pricePerHour, description, imageUrl } = facility.data; 
   return (
     <>
       <Navbar />

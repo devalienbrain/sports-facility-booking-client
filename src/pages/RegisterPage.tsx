@@ -11,29 +11,30 @@ const Register = () => {
   const [address, setAddress] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-  const [role, setRole] = useState("");
 
- 
-
-  const handleRegister = async (e) => {
+  const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          photoUrl: "https://i.ibb.co.com/k6hTYW1/Alien-Dev.jpg",
-          email,
-          password,
-          phone,
-          address,
-          role: "user",
-        }),
-      });
+      // const response = await fetch("http://localhost:5000/api/auth/signup", {
+      const response = await fetch(
+        "https://sports-facility-booking-server-vert.vercel.app/api/auth/signup",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            photoUrl: "https://i.ibb.co.com/k6hTYW1/Alien-Dev.jpg",
+            email,
+            password,
+            phone,
+            address,
+            role: "user", // Hardcoded as "user"
+          }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Registration failed");

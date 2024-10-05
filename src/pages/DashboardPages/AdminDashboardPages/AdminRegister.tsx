@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 const AdminRegister = () => {
   const [name, setName] = useState("");
