@@ -1,20 +1,74 @@
+// import { useGetFacilitiesQuery } from "@/redux/api";
+// import React from "react";
+
+// const FeaturedItems: React.FC = () => {
+//   const { data, isLoading, error } = useGetFacilitiesQuery("");
+//   const facilities = data?.data || [];
+
+//   return (
+//     <div className="text-center">
+//       <h1 className="text-5xl font-black text-center mb-8">
+//         Featured <span className="text-blue-800"> Facilities</span>
+//       </h1>
+
+//       {isLoading ? (
+//         <p>Loading featured facilities...</p>
+//       ) : error ? (
+//         <p>Failed to load facilities.</p>
+//       ) : (
+//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
+//           {facilities.map((facility: any) => (
+//             <div key={facility._id} className="card bg-black/50 p-3">
+//               <figure>
+//                 <img
+//                   src={facility.imageUrl} // Use imageUrl field
+//                   alt={facility.name}
+//                   className="w-full h-64 object-cover"
+//                 />
+//               </figure>
+//               <div className="card-body">
+//                 <h2 className="card-title text-center justify-center font-black text-xl">
+//                   {facility.name}
+//                 </h2>
+//                 <p className="text-sm font-light">{facility.description}</p>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+//       )}
+//     </div>
+//   );
+// };
+
+// export default FeaturedItems;
+
 import { useGetFacilitiesQuery } from "@/redux/api";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FeaturedItems: React.FC = () => {
   const { data, isLoading, error } = useGetFacilitiesQuery("");
-  const facilities = data?.data || [];
+  let facilities = data?.data || [];
+
+  // If facilities array is not empty, create a copy and select 3 random items
+  if (facilities.length > 0) {
+    facilities = [...facilities] // Create a shallow copy of the array
+      .sort(() => 0.5 - Math.random()) // Shuffle the array randomly
+      .slice(0, 3); // Select the first 3 items
+  }
 
   return (
-    <div className="text-center">
+    <div id="featuredItems" className="text-center">
       <h1 className="text-5xl font-black text-center mb-8">
-        Featured <span className="text-blue-800"> Facilities</span>
+        Featured <span className="text-blue-800">Facilities</span>
       </h1>
 
       {isLoading ? (
         <p>Loading featured facilities...</p>
       ) : error ? (
         <p>Failed to load facilities.</p>
+      ) : facilities.length === 0 ? (
+        <p>No facilities available.</p> // Show this if no facilities are available
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
           {facilities.map((facility: any) => (
@@ -36,6 +90,9 @@ const FeaturedItems: React.FC = () => {
           ))}
         </div>
       )}
+      <Link to="/facilities-list">
+        <div className="underline text-xs py-3 px-6 rounded-3xl shadow-lg text-slate-500">Click To Browse And Book Facilities</div>
+      </Link>
     </div>
   );
 };

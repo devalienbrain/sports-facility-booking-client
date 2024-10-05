@@ -8,7 +8,7 @@ const AboutUs = () => {
       <div>
         <Navbar />
       </div>
-      <div className="container mx-auto px-4 py-10">
+      <div className="container mx-auto px-4 py-10 w-3/4">
         {/* Mission Statement */}
         <section className="mb-10">
           <h2 className="text-3xl font-bold mb-4 text-center">Our Mission</h2>
@@ -22,20 +22,22 @@ const AboutUs = () => {
         {/* Team Section */}
         <section className="mb-10">
           <h2 className="text-3xl font-bold mb-4 text-center">Our Team</h2>
-          <div className="flex flex-wrap justify-center">
+          <div className="flex flex-col items-center justify-center flex-wrap">
             {/* Example Team Member */}
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+            <div className="w-full p-4">
               <div className="card shadow-lg">
+                <h3 className="font-bold text-xl text-center text-blue-600">
+                  Dr. Fati Loo
+                </h3>
                 <figure>
                   <img
                     src={img1}
                     alt="Team Member"
-                    className="rounded-t-lg w-full"
+                    className="rounded-t-lg w-36 rounded-full"
                   />
                 </figure>
                 <div className="card-body text-center">
-                  <h3 className="card-title">Dr. Fati Suu</h3>
-                  <p className="text-sm text-gray-600 text-center">
+                  <p className="text-sm text-gray-400 text-center font-semibold">
                     CEO & Founder
                   </p>
                   <p className="mt-2 text-gray-700">
@@ -47,18 +49,21 @@ const AboutUs = () => {
               </div>
             </div>
             {/* Add more team members as needed */}
-            <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4">
+            <div className="w-full p-4">
               <div className="card shadow-lg">
+                <h3 className="font-bold text-xl text-center text-blue-600">
+                  Engr Alien Dev
+                </h3>
+
                 <figure>
                   <img
                     src={img2}
                     alt="Team Member"
-                    className="rounded-t-lg w-full"
+                    className="rounded-t-lg w-36 rounded-full"
                   />
                 </figure>
                 <div className="card-body text-center">
-                  <h3 className="card-title">Engr Alien Dev</h3>
-                  <p className="text-sm text-gray-600 text-center">
+                  <p className="text-sm text-gray-400 text-center font-semibold">
                     Tech Specialist & Founder
                   </p>
                   <p className="mt-2 text-gray-700">
@@ -89,11 +94,11 @@ const AboutUs = () => {
           <h2 className="text-3xl font-bold mb-4 text-center">Contact Us</h2>
           <div className="text-center">
             <p className="text-lg text-gray-700">
-              Office Address: 123 Sports Lane, Cityville
+              Office Address: 123 Sports Lane, Gulshan, Dhaka, Bangladesh
             </p>
-            <p className="text-lg text-gray-700">Phone: (123) 456-7890</p>
+            <p className="text-lg text-gray-700">Phone: (+880) 1893-070812</p>
             <p className="text-lg text-gray-700">
-              Email: contact@sportsfacility.com
+              Email: contactFatihaSabbir@sportsfacility.com
             </p>
           </div>
         </section>

@@ -57,7 +57,7 @@ const Register = () => {
           <Link to="/">
             <div className="flex items-center gap-2">
               <img src={logo} alt="Logo" className="w-7" />
-              <p className="font-bold text-xl">Sportly Home</p>
+              <p className="font-extrabold text-3xl">Sportly Home</p>
             </div>
           </Link>
         </div>

@@ -64,23 +64,25 @@ const DashboardLayout: React.FC = () => {
             {user?.role === "admin" ? (
               <>
                 <li>
-                  <NavLink to="/dashboard/users">
-                    <FaUser /> All User
+                  <NavLink to="/dashboard/bookings">
+                    <FaShoppingCart /> All Bookings
                   </NavLink>
                 </li>
+
                 <li>
                   <NavLink to="/dashboard/facilities">
                     <FaList /> All Facilities
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink to="/dashboard/bookings">
-                    <FaShoppingCart /> All Bookings
-                  </NavLink>
-                </li>
+
                 <li>
                   <NavLink to="/dashboard/addFacility">
                     <FaAd /> Add a Facility
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/users">
+                    <FaUser /> All User
                   </NavLink>
                 </li>
                 <li>
@@ -88,17 +90,36 @@ const DashboardLayout: React.FC = () => {
                     <FaUsers /> Create An Admin
                   </NavLink>
                 </li>
+                <hr />
+                <li>
+                  <NavLink to="/dashboard/checkoutForPayment">
+                    <FaPaypal /> Payment
+                  </NavLink>
+                </li>
+
+                <li>
+                  <NavLink to="/dashboard/userBookings">
+                    <FaShoppingCart /> My Bookings
+                  </NavLink>
+                </li>
+                <hr />
               </>
             ) : (
               <>
+                <li>
+                  <NavLink to="/dashboard/checkoutForPayment">
+                    <FaPaypal /> Payment
+                  </NavLink>
+                </li>
+
                 <li>
                   <NavLink to="/dashboard/userBookings">
                     <FaShoppingCart /> My Bookings
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/checkoutForPayment">
-                    <FaPaypal /> Payment
+                  <NavLink to="/facilities-list">
+                    <FaShoppingCart /> Book A Facility
                   </NavLink>
                 </li>
               </>

@@ -40,10 +40,11 @@ const Login = () => {
           <Link to="/">
             <div className="flex items-center gap-2">
               <img src={logo} alt="Logo" className="w-7" />
-              <p className="font-bold text-xl">Sportly Home</p>
+              <p className="font-extrabold text-3xl">Sportly Home</p>
             </div>
           </Link>
         </div>
+
         <form
           onSubmit={handleLogin}
           className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"

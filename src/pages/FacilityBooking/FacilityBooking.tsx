@@ -6,6 +6,7 @@
 // import {
 //   useCheckAvailabilityQuery,
 //   useGetFacilityByIdQuery,
+//   useCreateBookingMutation, // Add this to use the booking mutation
 // } from "@/redux/api";
 
 // const FacilityBooking = () => {
@@ -16,7 +17,6 @@
 //     error: facilityError,
 //   } = useGetFacilityByIdQuery(id);
 
-//   // const [selectedDate, setSelectedDate] = useState("");
 //   const [selectedDate, setSelectedDate] = useState(() => {
 //     const today = new Date();
 //     return today.toISOString().split("T")[0]; // Format the date as YYYY-MM-DD
@@ -24,10 +24,13 @@
 
 //   const [availableSlots, setAvailableSlots] = useState([]);
 //   const [bookingDetails, setBookingDetails] = useState({
-//     date: "",
+//     date: selectedDate,
 //     startTime: "",
 //     endTime: "",
 //   });
+
+//   const [createBooking] = useCreateBookingMutation(); // Use the booking mutation
+
 //   const navigate = useNavigate();
 
 //   // Fetch availability based on the selected date and facility ID
@@ -53,14 +56,27 @@
 //     }));
 //   }, [selectedDate]);
 
-//   const handleBooking = () => {
-//     // Handle booking logic
-//     console.log("Booking details:", bookingDetails);
+//   const handleBooking = async () => {
+//     try {
+//       const bookingPayload = {
+//         facility: id, // The facility ID
+//         date: bookingDetails.date,
+//         startTime: bookingDetails.startTime,
+//         endTime: bookingDetails.endTime,
+//       };
 
-//     // Navigate to confirmation or payment page after successful booking
-//     // navigate(
-//     //   `/payment?facilityId=${id}&date=${bookingDetails.date}&startTime=${bookingDetails.startTime}&endTime=${bookingDetails.endTime}`
-//     // );
+//       // Call the mutation to create a new booking
+//       const response = await createBooking(bookingPayload).unwrap();
+//       console.log(response);
+//       alert(`${response?.message}`);
+//       // Navigate to payment or confirmation page after successful booking
+//       // navigate(
+//       //   `/payment?facilityId=${id}&date=${bookingDetails.date}&startTime=${bookingDetails.startTime}&endTime=${bookingDetails.endTime}`
+//       // );
+//     } catch (error) {
+//       console.error("Error creating booking:", error);
+//       // Handle error appropriately (e.g., show error message to user)
+//     }
 //   };
 
 //   if (isLoadingFacility) return <div>Loading facility details...</div>;
@@ -228,24 +244,30 @@
 
 // export default FacilityBooking;
 
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import Footer from "@/components/HomeComponents/Footer";
 import Navbar from "@/components/HomeComponents/Navbar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store"; // Import your root state for useSelector
 import {
   useCheckAvailabilityQuery,
   useGetFacilityByIdQuery,
-  useCreateBookingMutation, // Add this to use the booking mutation
+  useCreateBookingMutation,
 } from "@/redux/api";
 
 const FacilityBooking = () => {
   const { id } = useParams(); // Get facility ID from URL
+  const navigate = useNavigate();
+
   const {
     data: facility,
     isLoading: isLoadingFacility,
     error: facilityError,
   } = useGetFacilityByIdQuery(id);
+
+  const user = useSelector((state: RootState) => state.user.user); // Check user authentication
 
   const [selectedDate, setSelectedDate] = useState(() => {
     const today = new Date();
@@ -260,8 +282,6 @@ const FacilityBooking = () => {
   });
 
   const [createBooking] = useCreateBookingMutation(); // Use the booking mutation
-
-  const navigate = useNavigate();
 
   // Fetch availability based on the selected date and facility ID
   const { data: availabilityData, isLoading: isLoadingAvailability } =
@@ -286,7 +306,27 @@ const FacilityBooking = () => {
     }));
   }, [selectedDate]);
 
+  // Handle booking submission
   const handleBooking = async () => {
+    // Check if the user is logged in
+    if (!user) {
+      // alert("Please log in to make a booking.");
+      // Redirect to login page with a redirect URL to come back after login
+      navigate(`/login?redirect=/facility/${id}/book`);
+      return;
+    }
+
+    // Validate start and end times
+    if (!bookingDetails.startTime || !bookingDetails.endTime) {
+      alert("Please select both start and end times.");
+      return;
+    }
+
+    if (bookingDetails.endTime <= bookingDetails.startTime) {
+      alert("End time must be after the start time.");
+      return;
+    }
+
     try {
       const bookingPayload = {
         facility: id, // The facility ID
@@ -299,13 +339,11 @@ const FacilityBooking = () => {
       const response = await createBooking(bookingPayload).unwrap();
       console.log(response);
       alert(`${response?.message}`);
-      // Navigate to payment or confirmation page after successful booking
-      // navigate(
-      //   `/payment?facilityId=${id}&date=${bookingDetails.date}&startTime=${bookingDetails.startTime}&endTime=${bookingDetails.endTime}`
-      // );
+
+      navigate(`/dashboard/checkoutForPayment`);
     } catch (error) {
       console.error("Error creating booking:", error);
-      // Handle error appropriately (e.g., show error message to user)
+      alert("Error creating booking. Please try again.");
     }
   };
 
