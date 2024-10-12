@@ -13,18 +13,17 @@ const Login = () => {
   const dispatch = useAppDispatch();
 
   const [loginUser, { isLoading }] = useLoginUserMutation();
-
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       const response = await loginUser({ email, password }).unwrap();
       if (response.success) {
-        const { data, token } = response;
+        const { token, data } = response; // Destructure the correct fields
         console.log({ data, token });
 
         // Store token in localStorage if necessary
         localStorage.setItem("accessToken", token);
-        dispatch(setUser({ user: data, token }));
+        dispatch(setUser({ user: data, token })); // Pass user data and token to the Redux store
 
         navigate("/dashboard");
       }

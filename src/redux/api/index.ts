@@ -20,16 +20,16 @@ export const api = createApi({
   }),
   endpoints: (builder) => ({
     // User Authentication
-    loginUser: builder.mutation<
-      {
-        accessToken: string;
-        user: TUser;
-      },
-      {
-        email: string;
-        password: string;
-      }
-    >({
+    loginUser: builder.mutation<{
+      statusCode: number;
+      success: boolean;
+      token: string;
+      message: string;
+      data: TUser; // Assuming TUser is your user data type
+    }, {
+      email: string;
+      password: string;
+    }>({
       query: (credentials) => ({
         url: "/api/auth/login",
         method: "POST",
