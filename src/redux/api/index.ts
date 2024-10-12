@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { TUser } from "@/types/user.type";
-import { TFacility } from "@/types/facility.type";
+import { TFacilities, TFacility } from "@/types/facility.type";
 import { TBooking } from "@/types/booking.type";
 
 // Define the base API service
@@ -9,7 +9,7 @@ export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     // baseUrl: "http://localhost:5000",
-    baseUrl: "https://sports-facility-booking-server-vert.vercel.app/",
+    baseUrl: "https://sports-facility-booking-server-vert.vercel.app",
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token;
       if (token) {
@@ -51,9 +51,10 @@ export const api = createApi({
     }),
 
     // Facility Management
-    getFacilities: builder.query<any[], void>({
+    getFacilities: builder.query<TFacilities, void>({
       query: () => "/api/facility",
     }),
+
     getFacilityById: builder.query<any, string>({
       query: (id) => `/api/facility/${id}`,
     }),

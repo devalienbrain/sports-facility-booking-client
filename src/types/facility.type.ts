@@ -7,6 +7,7 @@ export type TFacility = {
   isDeleted: boolean;
   imageUrl: string;
 };
+
 export type TFacilities = {
-  data: TFacility;
+  data: TFacility[]; // Array of TFacility
 };

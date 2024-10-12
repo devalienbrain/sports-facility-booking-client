@@ -1,13 +1,13 @@
 import { useGetFacilitiesQuery } from "@/redux/api";
+import { TFacility } from "@/types/facility.type";
 import React from "react";
 import { FaArrowAltCircleRight } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const FeaturedItems: React.FC = () => {
-  const { data, isLoading, error } = useGetFacilitiesQuery();
+  const { data, isLoading, error } = useGetFacilitiesQuery(); // No need to pass <TFacilities>, it's inferred
 
-  let facilities = data?.data || [];
-  // let facilities = (data?.data || []) as TFacilities;
+  let facilities: TFacility[] = data?.data || [];
   if (facilities.length > 0) {
     facilities = [...facilities] // Create a shallow copy of the array
       .sort(() => 0.5 - Math.random()) // Shuffle the array randomly
@@ -28,7 +28,7 @@ const FeaturedItems: React.FC = () => {
         <p>No facilities available.</p> // Show this if no facilities are available
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 text-center">
-          {facilities.map((facility: any) => (
+          {facilities.map((facility: TFacility) => (
             <div key={facility._id} className="card bg-black/50 p-3">
               <figure>
                 <img
