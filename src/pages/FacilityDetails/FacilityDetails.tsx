@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const FacilityDetails = () => {
   const { id } = useParams(); // Get the ID from the URL
-  const { data: facility, isLoading, error } = useGetFacilityByIdQuery(id);
+  const { data: facility, isLoading, error } = useGetFacilityByIdQuery(id!);
   const navigate = useNavigate();
 
   if (isLoading) return <div>Loading facility details...</div>;
