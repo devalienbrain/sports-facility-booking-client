@@ -1,4 +1,8 @@
-import { useDeleteUserMutation, useGetAllUsersQuery, useUpdateUserRoleMutation } from "@/redux/api";
+import {
+  useDeleteUserMutation,
+  useGetAllUsersQuery,
+  useUpdateUserRoleMutation,
+} from "@/redux/api";
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaEdit, FaTrashAlt, FaUserShield } from "react-icons/fa";
@@ -31,7 +35,6 @@ const ManageUsers: React.FC = () => {
       )
     ) {
       try {
-          
         await updateUserRole({ id, role: isAdmin ? "user" : "admin" }).unwrap();
         alert(`Admin status ${isAdmin ? "removed" : "granted"} successfully`);
         refetch();
@@ -41,15 +44,10 @@ const ManageUsers: React.FC = () => {
       }
     }
   };
-  
 
   if (isLoading) return <div className="p-4">Loading...</div>;
   if (error)
-    return (
-      <div className="p-4 text-red-500">
-        Error loading users: {error.message}
-      </div>
-    );
+    return <div className="p-4 text-red-500">Error loading users!</div>;
 
   return (
     <div className="p-4">

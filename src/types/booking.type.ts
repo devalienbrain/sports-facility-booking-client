@@ -1,3 +1,6 @@
+import { TFacility } from "./facility.type";
+import { TUser } from "./user.type";
+
 export type TBooking = {
   _id: string; // Unique identifier for the booking
   userId: string; // ID of the user making the booking
@@ -10,4 +13,10 @@ export type TBooking = {
   status: "pending" | "confirmed" | "cancelled"; // Status of the booking
   createdAt: string; // Timestamp when the booking was created
   updatedAt: string; // Timestamp when the booking was last updated
+  facility: TFacility;
+  user: TUser;
 };
+
+export type TBookings = {
+  data: TBooking[]; // Array of TBooking
+}

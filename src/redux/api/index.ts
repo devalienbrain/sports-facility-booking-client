@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
 import { TUser, TUsersResponse } from "@/types/user.type";
 import { TFacilities, TFacility } from "@/types/facility.type";
-import { TBooking } from "@/types/booking.type";
+import { TBooking, TBookings } from "@/types/booking.type";
 
 // Define the base API service
 export const api = createApi({
@@ -111,7 +111,7 @@ export const api = createApi({
     }),
 
     // Booking Management
-    getAllBookings: builder.query<any[], void>({
+    getAllBookings: builder.query<TBookings, void>({
       query: () => "/api/bookings",
     }),
     getUserBookings: builder.query<any[], string>({
