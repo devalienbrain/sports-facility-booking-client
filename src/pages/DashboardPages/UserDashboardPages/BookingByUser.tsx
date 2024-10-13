@@ -5,8 +5,15 @@ import { useAppSelector } from "@/redux/hook";
 import { Link } from "react-router-dom";
 
 const BookingByUser: React.FC = () => {
-  const { _id: userId } = useAppSelector((state) => state.user.user);
-  const { data: bookings, error, isLoading } = useGetUserBookingsQuery(userId);
+  const user = useAppSelector((state) => state.user.user); // Get the user object
+  const userId = user?._id; // Use optional chaining to safely access _id
+
+  const {
+    data: bookings,
+    error,
+    isLoading,
+  } = useGetUserBookingsQuery(userId as string); // Cast userId to string
+
   const [deleteBooking] = useDeleteBookingMutation();
 
   const handleCancelBooking = async (bookingId: string) => {
@@ -108,4 +115,3 @@ const BookingByUser: React.FC = () => {
 };
 
 export default BookingByUser;
-
