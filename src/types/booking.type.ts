@@ -16,6 +16,7 @@ export type TBooking = {
   facility: TFacility;
   user: TUser;
   payableAmount: number;
+  date: string;
 };
 
 export type TBookings = {
