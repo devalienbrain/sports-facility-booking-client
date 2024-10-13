@@ -28,17 +28,19 @@ const UpdateFacility: React.FC = () => {
     }
   }, [facility]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await updateFacility({
         id: id!,
         facilityData: {
+          _id: facility.data._id, // Include the facility ID
           name,
           location,
           pricePerHour,
           description,
           imageUrl,
+          isDeleted: facility.data.isDeleted || false, // Set isDeleted as needed
         },
       }).unwrap(); // Pass the facility data to the mutation
       alert("Facility updated successfully");

@@ -1,10 +1,11 @@
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { api } from "../api";
-import { TBooking } from "@/types/booking.type";
+import { TBooking, TBookings } from "@/types/booking.type"; // Import TBookings as well
 
 // Define the initial state for the bookings
 export interface BookingState {
-  bookings: TBooking[];
+  bookings: TBooking[]; // Array of TBooking
   status: "idle" | "loading" | "failed";
 }
 
@@ -19,7 +20,7 @@ const bookingSlice = createSlice({
   initialState,
   reducers: {
     setBookings(state, action: PayloadAction<TBooking[]>) {
-      state.bookings = action.payload;
+      state.bookings = action.payload; // action.payload should be TBooking[]
     },
   },
   extraReducers: (builder) => {
@@ -28,13 +29,10 @@ const bookingSlice = createSlice({
       .addMatcher(api.endpoints.getAllBookings.matchPending, (state) => {
         state.status = "loading";
       })
-      .addMatcher(
-        api.endpoints.getAllBookings.matchFulfilled,
-        (state, action) => {
-          state.status = "idle";
-          state.bookings = action.payload;
-        }
-      )
+      .addMatcher(api.endpoints.getAllBookings.matchFulfilled, (state, action: PayloadAction<TBookings>) => {
+        state.status = "idle";
+        state.bookings = action.payload.data; // Now correctly assigning from action.payload.data
+      })
       .addMatcher(api.endpoints.getAllBookings.matchRejected, (state) => {
         state.status = "failed";
       });
