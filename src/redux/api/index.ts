@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { RootState } from "../store";
-import { TUser } from "@/types/user.type";
+import { TUser, TUsersResponse } from "@/types/user.type";
 import { TFacilities, TFacility } from "@/types/facility.type";
 import { TBooking } from "@/types/booking.type";
 
@@ -86,8 +86,8 @@ export const api = createApi({
     }),
 
     // User Management
-    getAllUsers: builder.query<any[], void>({
-      query: () => "/api/users",
+    getAllUsers: builder.query<TUsersResponse, void>({
+      query: () => "/users",
     }),
     deleteUser: builder.mutation<any, string>({
       query: (id) => ({
@@ -95,17 +95,11 @@ export const api = createApi({
         method: "DELETE",
       }),
     }),
-    updateUser: builder.mutation<
-      any,
-      {
-        id: string;
-        userData: TUser;
-      }
-    >({
-      query: ({ id, userData }) => ({
-        url: `/api/users/${id}`,
+    updateUserRole: builder.mutation<any, { id: string; role: string }>({
+      query: ({ id, role }) => ({
+        url: `/api/users/${id}/role`,
         method: "PUT",
-        body: userData,
+        body: { role },
       }),
     }),
     addAdmin: builder.mutation<any, any>({
@@ -186,7 +180,7 @@ export const {
   useDeleteFacilityMutation,
   useGetAllUsersQuery,
   useDeleteUserMutation,
-  useUpdateUserMutation,
+  useUpdateUserRoleMutation,
   useAddAdminMutation,
   useGetAllBookingsQuery,
   useGetUserBookingsQuery,

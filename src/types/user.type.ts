@@ -11,3 +11,6 @@ export type TUser = {
   address: string;
   isDeleted: boolean;
 };
+export type TUsersResponse = {
+  data: TUser[];
+};
