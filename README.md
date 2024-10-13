@@ -33,8 +33,9 @@ export default {
 
 
 
-SERVER CODE LINK: https://github.com/devalienbrain/sports-facility-booking-server
+Server Code Link: https://github.com/devalienbrain/sports-facility-booking-server
 
+Live Site (Deployed in Vercel) Link: https://sports-facility-booking-client-three.vercel.app/
 
 #Admin
 admin@sportly-home.com

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { useAppSelector } from "@/redux/hook";
 import { useCreteOrderMutation, useGetUserBookingsQuery } from "@/redux/api";
@@ -39,7 +38,8 @@ const CheckoutForPayment = () => {
   // const {
   //   data: bookings = { data: [] } as { data: Booking[] }, // Initialize bookings
   // } = useGetUserBookingsQuery(currentUser ? currentUser._id : null);
-  const { data: bookings = { data: [] } as { data: Booking[] }, } = useGetUserBookingsQuery(currentUser ? currentUser._id : "");
+  const { data: bookings = { data: [] } as { data: Booking[] } } =
+    useGetUserBookingsQuery(currentUser ? currentUser._id : "");
   // Calculate total amount to pay
   const totalPayableAmount =
     bookings.data?.reduce(
