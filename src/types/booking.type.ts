@@ -15,6 +15,7 @@ export type TBooking = {
   updatedAt: string; // Timestamp when the booking was last updated
   facility: TFacility;
   user: TUser;
+  payableAmount: number;
 };
 
 export type TBookings = {

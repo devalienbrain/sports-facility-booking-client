@@ -114,7 +114,7 @@ export const api = createApi({
     getAllBookings: builder.query<TBookings, void>({
       query: () => "/api/bookings",
     }),
-    getUserBookings: builder.query<any[], string>({
+    getUserBookings: builder.query<TBookings, string>({
       query: (userId) => `/api/bookings/user/${userId}`, // Pass userId to the API
     }),
 

@@ -65,7 +65,7 @@ const BookingByUser: React.FC = () => {
                 <p className="text-gray-600 mt-1">
                   Date:{" "}
                   <span className="font-semibold">
-                    {new Date(booking.date).toLocaleDateString()}
+                    {new Date(booking?.date).toLocaleDateString()}
                   </span>
                 </p>
                 <p className="text-gray-600 mt-1">
